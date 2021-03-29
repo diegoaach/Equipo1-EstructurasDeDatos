@@ -1,6 +1,8 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="prism.css">
+
     <title>Home</title>
     <style type="text/css">
         * {
@@ -87,6 +89,8 @@
      background-image: url("oriental-tiles.png");
      
      }
+
+
     </style>
     <div id="LVaED">
         <h1 style="text-align:center;color: white;" color: white;>LVaED </h1>
@@ -94,7 +98,7 @@
 </head>
 
 <body>
-
+    
     <div id="header">
         <nav>
 
@@ -119,67 +123,2607 @@
 
     </div>
     <div id="docBlock">
+            
         <br>
-
         <h1>Paradigma </h1><br><br>
         <p></p>
         <h1>Ventajas y desventajas </h1><br><br>
         <p></p>
-        <h1>Estructuras : </h1><br><br>
+        <h1 id="estructuras"> Estructuras : </h1><br>
+        <h2><a href="#listaenlazada">Lista enlazada</a></h2>
+        <h2><a href="#listadoble">Lista doblemente enlazada</a></h2>
+        <h2><a href="#listacircular">Lista circular enlazada</a></h2>
+        <h2><a href="#listacirculardoble">Lista circular doblemente enlazada</a></h2>
+        <h2><a href="#piladinamica">Pila dinamica</a></h2>
+        <h2><a href="#pilaarray">Pila basada en arreglos</a></h2>
+        <h2><a href="#coladinamica">Cola dinamica</a></h2>
+        <h2><a href="#colaarray">Cola basada en arreglos</a></h2>
+        <h2><a href="#arbolbinario">Arbol Binario</a></h2>
+        <h2><a href="#arbolninario">Arbol n-nario</a></h2>
+        <h2><a href="#tablahash">Tablas de Hash</a></h2>
+        <h2><a href="#grafo">Grafos</a></h2>
+        
         <p></p>
 
         <h1>Lista Enlazada</h1><br><br>
         <p>
         <h2>Estructura  </h2><br>
-        <p></p>
-        <h2>Metodos </h2><br>
-        <p></p>
+        <p id="listaenlazada">
+            Esta estructura se compone de una clase nodo y una clase lista.
         </p>
-        <h1>Pilas</h1><br><br>
+        <pre>
+            <code class="language-java">
+                // Clase nodo, metodos y atributos
+                public class ListNode {
+
+                    public Object Value;
+                    public ListNode Next;
+                
+                    public ListNode(Object value) {
+                        this.Value = value;
+                        this.Next = null;
+                    }
+                
+                    public ListNode(Object object, ListNode next) {
+                        this.Value = object;
+                        this.Next = next;
+                    }
+                
+                    public Object getObject() {
+                        return Value;
+                    }
+                
+                    public void setObject(Object object) {
+                        this.Value = object;
+                    }
+                
+                    public boolean isEquals(Object object) {
+                        if (this.getObject().toString().equals(object.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    public boolean isEquals(ListNode node) {
+                        if (this.toString().equals(node.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    @Override
+                    public String toString() {
+                        return "ListNode{"
+                                + "object=" + Value
+                                + ", next=" + Next
+                                + '}';
+                    }
+                }
+
+                // Clase lista, sus atributos y su constructor
+                
+                import java.util.Iterator;
+
+                public class LinkedList implements ListInterface, Iterable<ListNode>{
+                    public ListNode Start;
+                    public ListNode End;
+                    public int size;
+                    private ListNode inode;
+                
+                    public LinkedList() {
+                        this.Start = null;
+                        this.End = null;
+                        this.size = 0;
+                    }
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                // Retornará el tamaño de la lista
+                @Override
+                public int getSize() {
+                    return size;
+                }
+                
+                // Define si la lista esta vacia
+                @Override
+                public boolean isEmpty() {
+                    return Start == null;
+                }
+                
+                // Eliminara todos los elementos de la lista
+                @Override
+                public void clear() {
+                    Start = null;
+                    End = null;
+                    size = 0;
+                }
+                
+                // Retornará la cabeza o elemento inicial de la lista
+                @Override
+                public Object getHead() {
+                    return Start;
+                }
+            
+                // Retornará la cola o elemento final de la lista
+                @Override
+                public Object getTail() {
+                    return End;
+                }
+                
+                // Retornará el indice en el que se encuentra el objeto dado
+                public int GetIndex(Object object) {
+                    for (int i = 0; i < this.size; i++) {
+                        if (object == this.Get(i)) {
+                            return i;
+                        }
+                    }
+                    throw new IndexOutOfBoundsException("Object not in list");
+                }
+                
+                // Retornara el objeto que se encuentra en el indice dado
+                public Object Get(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    ListNode current = this.Start;
+                    for (int list_index = 0; list_index < this.size; list_index++) {
+                        if (list_index == index) {
+                            return current.Value;
+                        }
+                        current = current.Next;
+                    }
+                    // It will never execute this
+                    return null;
+                }
+            
+                // Retornara el nodo que se encuentra en el indice dado
+                public ListNode GetNode(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    ListNode current = this.Start;
+                    for (int list_index = 0; list_index < this.size; list_index++) {
+                        if (list_index == index) {
+                            return current;
+                        }
+                        current = current.Next;
+                    }
+                    // It will never execute this
+                    return null;
+                }
+            
+                // Define si el objeto dado se encuentra en la lista
+                @Override
+                public ListNode search(Object object) {
+                    Iterator<ListNode> i = this.iterator();
+                    ListNode inode;
+                    while ((inode = i.next()) != null) {
+                        if (inode.getObject().toString().equals(object.toString())) {
+                            return inode;
+                        }
+                    }
+                    return null;
+                }
+            
+                // Agrega un objeto al final de la lista
+                @Override
+                public boolean add(Object value) {
+                    try {
+                        this.insertTail(value);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+                
+                // Agrega un objeto en un nuevo nodo siguiente al nodo objetivo
+                @Override
+                public boolean insert(ListNode node, Object object) {
+                    try {
+                        if (node.Next == null) {
+                            add(object);
+                        } else {
+                            ListNode newNode = new ListNode(object);
+                            newNode.Next = node.Next;
+                            node.Next = newNode;
+                        }
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+                
+                // Sobrecarga del metodo insert
+                @Override
+                public boolean insert(Object ob, Object object) {
+                    try {
+                        if (ob != null) {
+                            ListNode node = this.search(ob);
+                            if (node != null) {
+                                return insert(node, object);
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+                
+                // Inserta un nuevo elemento despues del nodo final
+                public boolean insertTail(Object value) {
+                    try {
+                        if (isEmpty() == true) {
+                            this.Start = new ListNode(value);
+                            this.End = this.Start;
+                        } else {
+                            ListNode old_end_node = this.End;
+                            this.End = new ListNode(value);
+            
+                            old_end_node.Next = this.End;
+                        }
+                        this.size++;
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+            
+                // Inserta un nodo al principio de la lista
+                @Override
+                public boolean insertHead(Object value) {
+                    try {
+                        if (isEmpty() == true) {
+                            this.Start = new ListNode(value);
+                            this.End = this.Start;
+                        } else {
+                            Start = new ListNode(value, Start);
+                        }
+                        this.size++;
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Remueve un nodo dado un indice
+                public void Remove(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    if (this.size == 1) {
+                        // The list has only one Node
+                        this.Start = null;
+                        this.End = null;
+                    } else if (index == 0) {
+                        // First Node
+                        this.Start = this.Start.Next;
+                    } else if (index == this.size - 1) {
+            
+                        this.End.Next = null;
+                    } else {
+                        // Any middle node
+                        ListNode current = this.Start;
+                        for (int list_index = 0; list_index < this.size; list_index++) {
+                            if (list_index == index - 1) {
+                                // Node1 -> Node2 -> Node3
+                                // Node1 -> Node3
+                                current.Next = current.Next.Next;
+                                break;
+                            }
+                            current = current.Next;
+                        }
+                    }
+                    this.size--;
+                }
+            
+                // Remueve un nodo dado un nodo
+                @Override
+                public boolean remove(ListNode node) {
+                    try {
+                        int index = this.GetIndex(node.getObject());
+                        this.Remove(index);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+            
+                // Remueve un nodo dado un objeto
+                @Override
+                public boolean remove(Object object) {
+                    try {
+                        int index = this.GetIndex(object);
+                        this.Remove(index);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+            
+                // Define si el objeto se encuentra en la lista
+                @Override
+                public boolean contains(Object object) {
+                    if (this.search(object) == null) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            
+                // Pasa los elementos de la lista a un array
+                @Override
+                public Object[] toArray() {
+                    Object[] arrayOfObjects = new Object[this.size];
+                    for (int i = 0; i < this.size; i++) {
+                        arrayOfObjects[i] = this.Get(i);
+                    }
+                    return arrayOfObjects;
+                }
+            
+                // Pasa los elementos de la lista a un array dado
+                @Override
+                public Object[] toArray(Object[] arrayOfObjects) {
+                    for (int i = 0; i < this.size; i++) {
+                        arrayOfObjects[i] = this.Get(i);
+                    }
+                    return arrayOfObjects;
+                }
+            
+                // Retorna el nodo anterior al nodo dado
+                @Override
+                public ListNode getBeforeTo(ListNode node) {
+                    int index = this.GetIndex(node.getObject());
+                    ListNode current = this.GetNode(index - 1);
+                    current = current;
+                    return current;
+                }
+            
+                // Retorna el nodo siguiente al nodo dado
+                @Override
+                public Object getNextTo(ListNode node) {
+                    ListNode current = this.search(node.getObject());
+                    current = current.Next;
+                    return current;
+                }
+                
+                // Retorna una lista que ira de argumento hasta argumento
+                @Override
+                public LinkedList subList(ListNode from, ListNode to) {
+                    if (this.contains(from.getObject()) == true && this.contains(to.getObject()) == true) {
+                        int indexFrom = this.GetIndex(from.getObject());
+                        int indexTo = this.GetIndex(to.getObject());
+                        LinkedList subList = new LinkedList();
+            
+                        for (int i = 0; i < this.size; i++) {
+                            if (i >= indexFrom && i < indexTo) {
+                                subList.add(this.Get(i));
+                            }
+                        }
+            
+                        return subList;
+                    } else {
+                        throw new IndexOutOfBoundsException("At least one of the two nodes are not in list");
+                    }
+                }
+            
+                // Iterara toda la lista
+                @Override
+                public Iterator<ListNode> iterator() {
+                    inode = Start;
+                    return new Iterator<ListNode>() {
+                        @Override
+                        public boolean hasNext() {
+                            return inode.Next != null;
+                        }
+            
+                        @Override
+                        public ListNode next() {
+                            if (inode != null) {
+                                ListNode tmp = inode;
+                                inode = inode.Next;
+                                return tmp;
+                            } else {
+                                return null;
+                            }
+                        }
+                    };
+                }
+            
+                // Ordenara la lista si es de numeros
+                public LinkedList sortListK() {
+                    LinkedList sortedList = new LinkedList();
+                    // Node current will point to head 
+                    ListNode current = this.Start, index = null;
+            
+                    int temp;
+            
+                    if (this.Start == null) {
+                        return null;
+                    } else {
+                        while (current != null) {
+                            index = current.Next;
+            
+                            while (index != null) {
+                                if ((int) current.Value > (int) index.Value) {
+                                    temp = (int) current.Value;
+                                    current.Value = index.Value;
+                                    index.Value = temp;
+            
+                                }
+            
+                                index = index.Next;
+                            }
+                            sortedList.add(current.Value);
+                            current = current.Next;
+                        }
+                    }
+                    return sortedList;
+                }
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
+        <h1>Lista doblemente enlazada</h1><br><br>
+        <p>
+            
+        <h2>Estructura  </h2><br>
+        <p id="listadoble">
+            Esta estructura se compone de una clase nodo y una clase lista.
+        </p>
+        <pre>
+            <code class="language-java">
+                // Clase nodo, metodos y atributos
+                public class ListNode {
+                    public Object Value;
+                    public ListNode Next;
+                    public ListNode Before;
+                  
+                    public ListNode(){
+                    this.Value=null;
+                    this.Next=null;
+                    this.Before=null;
+                }
+                    
+                    public ListNode(Object value) {
+                        this.Value = value;
+                        this.Next = null;
+                    }
+                    
+                    public ListNode(Object object, ListNode next) {
+                        this.Value = object;
+                        this.Next = next;
+                    }
+                
+                    public Object getObject() {
+                        return Value;
+                    }
+                
+                    public void setObject(Object object) {
+                        this.Value = object;
+                    }
+                
+                    public boolean isEquals(Object object) {
+                        if (this.getObject().toString().equals(object.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    public boolean isEquals(ListNode node) {
+                        if (this.toString().equals(node.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                    
+                    @Override
+                    public String toString() {
+                        return "ListNode{" +
+                                "object=" + Value +
+                                //"before" + Before+
+                                ", next=" + Next +
+                                '}';
+                    }
+                }
+                // Clase listadoble, sus atributos y su constructor
+                import java.util.Iterator;
+
+                public class DoubleLinkedList implements ListInterface, Iterable<ListNode>{
+                    public ListNode Start;
+                    public ListNode End;
+                    public int size;
+                    private ListNode inode;
+
+                    public DoubleLinkedList() {
+                        this.Start = null;
+                        this.End = null;
+                        this.size = 0;
+                    }
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                @Override
+                // Retornará el tamaño de la lista
+                public int getSize() {
+                    return size;
+                }
+
+                // Define si la lista esta vacia
+                @Override
+                public boolean isEmpty() {
+                    return Start == null;
+                }
+
+                // Eliminara todos los elementos de la lista
+                @Override
+                public void clear() {
+                    Start = null;
+                    End = null;
+                    size = 0;
+                }
+
+                // Retornará la cabeza o elemento inicial de la lista
+                @Override
+                public Object getHead() {
+                    return Start;
+                }
+
+                // Retornará la cola o elemento final de la lista
+                @Override
+                public Object getTail() {
+                    return End;
+                }
+
+                // Retornará el indice en el que se encuentra el objeto dado
+                public int GetIndex(Object object) {
+                    for (int i = 0; i < this.size; i++) {
+                        if (object == this.Get(i)) {
+                            return i;
+                        }
+                    }
+                    throw new IndexOutOfBoundsException("Object not in list");
+                }
+
+                // Retornara el objeto que se encuentra en el indice dado
+                public Object Get(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    ListNode current = this.Start;
+                    for (int list_index = 0; list_index < this.size; list_index++) {
+                        if (list_index == index) {
+                            return current.Value;
+                        }
+                        current = current.Next;
+                    }
+                    // It will never execute this
+                    return null;
+                }
+
+                // Retornara el nodo que se encuentra en el indice dado
+                public ListNode GetNode(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    ListNode current = this.Start;
+                    for (int list_index = 0; list_index < this.size; list_index++) {
+                        if (list_index == index) {
+                            return current;
+                        }
+                        current = current.Next;
+                    }
+                    // It will never execute this
+                    return null;
+                }
+             
+                // Define si el objeto dado se encuentra en la lista
+                @Override
+                public ListNode search(Object object) {
+                    Iterator<ListNode> i = this.iterator();
+                    ListNode inode;
+                    while ((inode = i.next()) != null) {
+                        if (inode.getObject().toString().equals(object.toString())) {
+                            return inode;
+                        }
+                    }
+                    i = this.RevIterator();
+                    while ((inode = i.next()) != null) {
+                        if (inode.getObject().toString().equals(object.toString())) {
+                            return inode;
+                        }
+                    }
+
+                    return null;
+                }
+
+                // Agrega un objeto al final de la lista
+                @Override
+                public boolean add(Object value) {
+                    try {
+                        this.insertTail(value);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Agrega un objeto en un nuevo nodo siguiente al nodo objetivo
+                @Override
+                public boolean insert(ListNode node, Object object) {
+                    try {
+                        if (node.Next == null) {
+                            add(object);
+                        } else {
+                            ListNode newNode = new ListNode(object);
+                            newNode.Next = node.Next;
+                            node.Next = newNode;
+                        }
+                        size++;
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Sobrecarga del metodo insert
+                @Override
+                public boolean insert(Object ob, Object object) {
+                    try {
+                        if (ob != null) {
+                            ListNode node = this.search(ob);
+                            if (node != null) {
+                                return insert(node, object);
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Inserta un nuevo elemento despues del nodo final
+                public boolean insertTail(Object value) {
+                    try {
+                        if (isEmpty() == true) {
+
+                            this.Start = new ListNode(value);
+                            this.End = this.Start;
+                            this.Start.Before = null;
+                        } else {
+                            ListNode old_end_node = this.End;
+                            this.End = new ListNode(value);
+                            this.End.Before = old_end_node;
+                            old_end_node.Next = this.End;
+                        }
+                        this.size++;
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Inserta un nodo al principio de la lista
+                @Override
+                public boolean insertHead(Object value) {
+                    try {
+                        if (isEmpty() == true) {
+                            this.Start = new ListNode(value);
+                            this.End = this.Start;
+                            this.Start.Before = null;
+
+                        } else {
+                            Start = new ListNode(value, Start);
+                            Start.Before = null;
+                        }
+                        this.size++;
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Remueve un nodo dado un indice
+                public void Remove(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    if (this.size == 1) {
+                        // The list has only one Node
+                        this.Start = null;
+                        this.End = null;
+                    } else if (index == 0) {
+                        // First Node
+                        this.Start = this.Start.Next;
+                        this.Start.Before = null;
+                    } else if (index == this.size - 1) {
+                        // Last Node
+                        this.End = this.End.Before;
+                        this.End.Next = null;
+                    } else {
+                        // Any middle node
+                        ListNode current = this.Start;
+                        for (int list_index = 0; list_index < this.size; list_index++) {
+                            if (list_index == index) {
+                                // Node1 -> Node2 -> Node3
+                                // Node1 -> Node3
+                                current.Before.Next = current.Next;
+                                current.Next.Before = current.Before;
+                                break;
+                            }
+                            current = current.Next;
+                        }
+                    }
+                    this.size--;
+
+                }
+            
+                // Remueve un nodo dado un nodo
+                @Override
+                public boolean remove(ListNode node) {
+                    try {
+                        int index = this.GetIndex(node.getObject());
+                        this.Remove(index);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+ 
+                // Remueve un nodo dado un objeto
+                @Override
+                public boolean remove(Object object) {
+                    try {
+                        int index = this.GetIndex(object);
+                        this.Remove(index);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Define si el objeto se encuentra en la lista
+                @Override
+                public boolean contains(Object object) {
+                    if (this.search(object) == null) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+
+                // Pasa los elementos de la lista a un array
+                @Override
+                public Object[] toArray() {
+                    Object[] arrayOfObjects = new Object[this.size];
+                    for (int i = 0; i < this.size; i++) {
+                        arrayOfObjects[i] = this.Get(i);
+                    }
+                    return arrayOfObjects;
+                }
+              
+                // Pasa los elementos de la lista a un array dado
+                @Override
+                public Object[] toArray(Object[] arrayOfObjects) {
+                    for (int i = 0; i < this.size; i++) {
+                        arrayOfObjects[i] = this.Get(i);
+                    }
+                    return arrayOfObjects;
+                }
+
+                // Retorna el nodo anterior al nodo dado
+                @Override
+                public ListNode getBeforeTo(ListNode node) {
+                    ListNode current = this.search(node.getObject());
+                    current = current.Before;
+                    return current;
+                }
+
+                // Retorna el nodo siguiente al nodo dado
+                @Override
+                public Object getNextTo(ListNode node) {
+                    ListNode current = this.search(node.getObject());
+                    current = current.Next;
+                    return current;
+                }
+
+                // Retorna una lista que ira de argumento hasta argumento
+                @Override
+                public DoubleLinkedList subList(ListNode from, ListNode to) {
+                    if (this.contains(from.getObject()) == true && this.contains(to.getObject()) == true) {
+                        int indexFrom = this.GetIndex(from.getObject());
+                        int indexTo = this.GetIndex(to.getObject());
+                        DoubleLinkedList subList = new DoubleLinkedList();
+
+                        for (int i = 0; i < this.size; i++) {
+                            if (i >= indexFrom && i < indexTo) {
+                                subList.add(this.Get(i));
+                            }
+                        }
+
+                        return subList;
+                    } else {
+                        throw new IndexOutOfBoundsException("At least one of the two nodes are not in list");
+                    }
+                }
+
+                // Iterara toda la lista
+                @Override
+                public Iterator<ListNode> iterator() {
+                    inode = Start;
+                    return new Iterator<ListNode>() {
+                        @Override
+                        public boolean hasNext() {
+                            return inode.Next != null;
+                        }
+
+                        @Override
+                        public ListNode next() {
+                            if (inode != null) {
+                                ListNode tmp = inode;
+                                inode = inode.Next;
+                                return tmp;
+                            } else {
+                                return null;
+                            }
+                        }
+                    };
+                }
+
+                // Iterara la lista en reversa
+                public Iterator<ListNode> RevIterator() {
+                    inode = End;
+                    return new Iterator<ListNode>() {
+                        @Override
+                        public ListNode next() {
+                            if (inode != null) {
+                                ListNode tmp = inode;
+                                inode = inode.Before;
+                                return tmp;
+                            } else {
+                                return null;
+                            }
+                        }
+
+                        @Override
+                        public boolean hasNext() {
+                            return inode.Before != null;
+                        }
+                    };
+                }
+
+                // Ordenara la lista si es de numeros
+                @Override
+                public DoubleLinkedList sortList() {
+                    DoubleLinkedList sortedList = new DoubleLinkedList();
+                    // Node current will point to head 
+                    ListNode current = this.Start, index = null;
+
+                    int temp;
+
+                    if (this.Start == null) {
+                        return null;
+                    } else {
+                        while (current != null) {
+                            index = current.Next;
+
+                            while (index != null) {
+                                if ((int) current.Value > (int) index.Value) {
+                                    temp = (int) current.Value;
+                                    current.Value = index.Value;
+                                    index.Value = temp;
+
+                                }
+
+                                index = index.Next;
+                            }
+                            sortedList.add(current.Value);
+                            current = current.Next;
+                        }
+                    }
+                    return sortedList;
+                }
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
+        <h1>Lista circular enlazada</h1><br><br>
         <p>
         <h2>Estructura  </h2><br>
-        <p></p>
-        <h2>Metodos </h2><br>
-        <p></p>
+        <p id="listacircular"> 
+            Esta estructura se compone de una clase nodo y una clase listacircular.
         </p>
-        <h1>Colas</h1><br><br>
+        <pre>
+            <code class="language-java">
+                // Clase nodo, metodos y atributos
+                public class ListNode {
+
+                    public Object Value;
+                    public ListNode Next;
+                
+                    public ListNode(Object value) {
+                        this.Value = value;
+                        this.Next = null;
+                    }
+                
+                    public ListNode(Object object, ListNode next) {
+                        this.Value = object;
+                        this.Next = next;
+                    }
+                
+                    public Object getObject() {
+                        return Value;
+                    }
+                
+                    public void setObject(Object object) {
+                        this.Value = object;
+                    }
+                
+                    public boolean isEquals(Object object) {
+                        if (this.getObject().toString().equals(object.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    public boolean isEquals(ListNode node) {
+                        if (this.toString().equals(node.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    @Override
+                    public String toString() {
+                        return "ListNode{"
+                                + "object=" + Value
+                                + ", next=" + Next
+                                + '}';
+                    }
+                }
+
+                // Clase lista, sus atributos y su constructor
+                
+                import java.util.Iterator;
+
+                public class LinkedList implements ListInterface, Iterable<ListNode>{
+                    public ListNode Start;
+                    public ListNode End;
+                    public int size;
+                    private ListNode inode;
+                
+                    public LinkedList() {
+                        this.Start = null;
+                        this.End = null;
+                        this.size = 0;
+                    }
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                // Retornará el tamaño de la lista
+                @Override
+                public int getSize() {
+                    return size;
+                }
+                
+                // Define si la lista esta vacia
+                @Override
+                public boolean isEmpty() {
+                    return Start == null;
+                }
+                
+                // Eliminara todos los elementos de la lista
+                @Override
+                public void clear() {
+                    Start = null;
+                    End = null;
+                    size = 0;
+                }
+                
+                // Retornará la cabeza o elemento inicial de la lista
+                @Override
+                public Object getHead() {
+                    return Start;
+                }
+                
+                // Retornará la cola o elemento final de la lista
+                @Override
+                public Object getTail() {
+                    return End;
+                }
+                
+                // Retornará el indice en el que se encuentra el objeto dado
+                public int GetIndex(Object object){
+                    for(int i=0;i<this.size;i++){
+                        if(object==this.Get(i)){
+                            return i;
+                        }
+                    }
+                    throw new IndexOutOfBoundsException("Object not in list");
+                }
+                
+                // Retornara el objeto que se encuentra en el indice dado
+                public Object Get(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    ListNode current = this.Start;
+                    for (int list_index = 0; list_index < this.size; list_index++) {
+                        if (list_index == index) {
+                            return current.Value;
+                        }
+                        current = current.Next;
+                    }
+                    // It will never execute this
+                    return null;
+                }
+                
+                // Retornara el nodo que se encuentra en el indice dado
+                public ListNode GetNode(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    ListNode current = this.Start;
+                    for (int list_index = 0; list_index < this.size; list_index++) {
+                        if (list_index == index) {
+                            return current;
+                        }
+                        current = current.Next;
+                    }
+                    // It will never execute this
+                    return null;
+                }
+
+                // Define si el objeto dado se encuentra en la lista
+                @Override
+                public ListNode search(Object object) {
+                    Iterator<ListNode> i = this.iterator();
+                    ListNode inode=Start;
+                    int cont=0;
+                    while (cont<this.size) {
+                        
+                        if (inode.getObject().toString().equals(object.toString())) {
+                            return inode;
+                        }
+                    cont++;
+                    inode=inode.Next;
+                    }
+                    return null;
+                }
+                
+                // Agrega un objeto al final de la lista
+                @Override
+                public boolean add(Object value) {
+                    try {
+                        this.insertTail(value);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+                
+                // Agrega un objeto en un nuevo nodo siguiente al nodo objetivo
+                @Override
+                public boolean insert(ListNode node, Object object) {
+                    try {
+                        if (node.Next == null) {
+                            add(object);
+                        } else {
+                            ListNode newNode = new ListNode(object);
+                            newNode.Next = node.Next;
+                            node.Next = newNode;
+                        }
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Sobrecarga del metodo insert
+                @Override
+                public boolean insert(Object ob, Object object) {
+                    try {
+                        if (ob != null) {
+                            ListNode node = this.search(ob);
+                            if (node != null) {
+                                return insert(node, object);
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+                
+                // Inserta un nuevo elemento despues del nodo final
+                public boolean insertTail(Object value){
+                    try{
+                    if (isEmpty() == true) {
+                        this.Start = new ListNode(value);
+                        this.End = this.Start;
+                        this.End.Next=this.Start;
+                    } else {
+                        ListNode old_end_node = this.End;
+                        this.End = new ListNode(value);
+                        old_end_node.Next = this.End;
+                        this.End.Next=this.Start;
+                    }
+                    this.size++;
+                    return true;
+                    }
+                    catch (Exception e) {
+                        return false;
+                    }
+                }     
+                
+                // Inserta un nodo al principio de la lista
+                @Override
+                public boolean insertHead(Object value){
+                    try{
+                    if (isEmpty() == true) {
+                        this.Start = new ListNode(value);
+                        this.End = this.Start;
+                    } else {
+                        Start = new ListNode(value, Start);
+                    }
+                    this.size++;
+                    return true;
+                    }
+                    catch (Exception e) {
+                        return false;
+                    }
+                }        
+                        
+                // Remueve un nodo dado un indice
+                public void Remove(int index) {
+                if (isEmpty() == true) {
+                            throw new IndexOutOfBoundsException("List is empty");
+                        }
+                        if (index >= this.size) {
+                            throw new IndexOutOfBoundsException("Index out of range");
+                        }
+                        if (this.size == 1) {
+                            // The list has only one Node
+                            this.Start = null;
+                            this.End = null;
+                        } else if (index == 0) {
+                            // First Node
+                            this.End.Next=this.Start.Next;
+                            this.Start = this.Start.Next;
+                        } else if (index == this.size - 1) {
+                            ListNode current= this.GetNode(this.size-2);
+                            this.End=current;
+                            this.End.Next = this.Start;
+                            
+                        } else {
+                            // Any middle node
+                            ListNode current = this.Start;
+                            for (int list_index = 0; list_index < this.size; list_index++) {
+                                if (list_index == index-1) {
+                                    // Node1 -> Node2 -> Node3
+                                    // Node1 -> Node3
+                                    current.Next=current.Next.Next;
+                                    break;
+                                }
+                                current = current.Next;
+                            }
+                        }
+                        this.size--;
+                }
+                
+                // Remueve un nodo dado un nodo
+                @Override
+                public boolean remove(ListNode node) {
+                    try {
+                        int index = this.GetIndex(node.getObject());
+                        this.Remove(index);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+                              
+                // Remueve un nodo dado un objeto
+                @Override
+                public boolean remove(Object object) {
+                    try {
+                        int index = this.GetIndex(object);
+                        this.Remove(index);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+                
+                // Define si el objeto se encuentra en la lista
+                @Override
+                public boolean contains(Object object) {
+                    if(this.search(object)==null){
+                        return false;
+                    }
+                    else{
+                        return true;
+                    }
+                }
+                
+                // Pasa los elementos de la lista a un array
+                @Override
+                public Object[] toArray(){
+                    Object[] arrayOfObjects = new Object[this.size];
+                    for(int i=0;i<this.size;i++){
+                        arrayOfObjects[i]=this.Get(i);
+                    }
+                    return arrayOfObjects;
+                }
+                
+                // Pasa los elementos de la lista a un array dado
+                @Override
+                public Object[] toArray(Object[] arrayOfObjects){
+                    for(int i=0;i<this.size;i++){
+                        arrayOfObjects[i]=this.Get(i);
+                    }
+                    return arrayOfObjects;
+                }
+                
+                // Retorna el nodo anterior al nodo dado
+                @Override
+                public ListNode getBeforeTo(ListNode node){
+                    int index = this.GetIndex(node.getObject());
+                    ListNode current= this.GetNode(index-1);
+                    current= current;
+                    return current;
+                }
+                
+                // Retorna el nodo siguiente al nodo dado
+                @Override
+                public Object getNextTo(ListNode node){
+                    ListNode current= this.search(node.getObject());
+                    current= current.Next;
+                    return current;
+                }
+                
+                // Retorna una lista que ira de argumento hasta argumento
+                @Override
+                public LinkedListCircular subList(ListNode from, ListNode to) {
+                    if (this.contains(from.getObject()) == true && this.contains(to.getObject()) == true) {
+                        int indexFrom = this.GetIndex(from.getObject());
+                        int indexTo = this.GetIndex(to.getObject());
+                        LinkedListCircular subList = new LinkedListCircular();
+
+                        for (int i = 0; i < this.size; i++) {
+                            if (i >= indexFrom && i < indexTo) {
+                                subList.add(this.Get(i));
+                            }
+                        }
+
+                        return subList;
+                    }
+                    else{
+                        throw new IndexOutOfBoundsException("At least one of the two nodes are not in list");
+                    }
+                }
+                
+                // Iterara toda la lista
+                @Override
+                public Iterator<ListNode> iterator() {
+                    inode = Start;
+                    return new Iterator<ListNode>() {
+                        @Override
+                        public boolean hasNext() {
+                            return inode!=null;
+                                
+                            
+                        }
+
+                        @Override
+                        public ListNode next() {
+                            ListNode tmp = inode;
+                                inode = inode.Next;
+                                return tmp;
+
+                        }
+                    };
+                }
+                
+                // Ordenara la lista si es de numeros
+                public LinkedListCircular sortListK() 
+                { 
+                    LinkedListCircular sortedList= new LinkedListCircular();
+                    // Node current will point to head 
+                    ListNode current = this.Start, index = null; 
+            
+                    int temp; 
+            
+                    if (this.Start == null) { 
+                        return null; 
+                    } 
+                    else { 
+                        while (current != null) { 
+                            index = current.Next; 
+            
+                            while (index != null) {  
+                                if ((int)current.Value > (int)index.Value) { 
+                                    temp = (int)current.Value; 
+                                    current.Value = index.Value; 
+                                    index.Value = temp;
+                                    
+                                } 
+                                
+                                index = index.Next; 
+                            } 
+                            sortedList.add(current.Value);
+                            current = current.Next; 
+                        } 
+                    }
+                    return sortedList;
+                }
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
+        <h1>Lista doblemente circular enlazada</h1><br><br>
         <p>
         <h2>Estructura  </h2><br>
-        <p></p>
-        <h2>Metodos </h2><br>
-        <p></p>
+        <p id="listacirculardoble">
+            Esta estructura se compone de una clase nodo y una clase lista.
         </p>
+        <pre>
+            <code class="language-java">
+                // Clase nodo, metodos y atributos
+                public class ListNode {
+
+                    public Object Value;
+                    public ListNode Next;
+                    public ListNode Before;
+                
+                    public ListNode() {
+                        this.Value = null;
+                        this.Next = null;
+                        this.Before = null;
+                    }
+                
+                    public ListNode(Object value) {
+                        this.Value = value;
+                        this.Next = null;
+                    }
+                
+                    public ListNode(Object object, ListNode next) {
+                        this.Value = object;
+                        this.Next = next;
+                    }
+                
+                    public Object getObject() {
+                        return Value;
+                    }
+                
+                    public void setObject(Object object) {
+                        this.Value = object;
+                    }
+                
+                    public boolean isEquals(Object object) {
+                        if (this.getObject().toString().equals(object.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    public boolean isEquals(ListNode node) {
+                        if (this.toString().equals(node.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    @Override
+                    public String toString() {
+                        return "ListNode{"
+                                + "object=" + Value
+                                + '}';
+                    }
+                }
+                // Clase listadoblecircular, atributos y constructor
+                public class CircularDoubleLinkedList implements ListInterface, Iterable<ListNode> {
+
+                    public ListNode Start;
+                    public ListNode End;
+                    public int size;
+                    private ListNode inode;
+                
+                    public CircularDoubleLinkedList() {
+                        this.Start = null;
+                        this.End = null;
+                        this.size = 0;
+                    }
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                // Retornará el tamaño de la lista
+                @Override
+                public int getSize() {
+                    return size;
+                }
+
+                // Define si la lista esta vacia
+                @Override
+                public boolean isEmpty() {
+                    return Start == null;
+                }
+
+                // Eliminara todos los elementos de la lista
+                @Override
+                public void clear() {
+                    Start = null;
+                    End = null;
+                    size = 0;
+                }
+       
+                // Retornará la cabeza o elemento inicial de la lista
+                @Override
+                public Object getHead() {
+                    return Start;
+                }
+
+                // Retornará la cola o elemento final de la lista
+                @Override
+                public Object getTail() {
+                    return End;
+                }
+
+                // Retornará el indice en el que se encuentra el objeto dado
+                public int GetIndex(Object object) {
+                    for (int i = 0; i < this.size; i++) {
+                        if (object == this.Get(i)) {
+                            return i;
+                        }
+                    }
+                    throw new IndexOutOfBoundsException("Object not in list");
+                }
+
+                // Retornara el objeto que se encuentra en el indice dado
+                public Object Get(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    ListNode current = this.Start;
+                    for (int list_index = 0; list_index < this.size; list_index++) {
+                        if (list_index == index) {
+                            return current.Value;
+                        }
+                        current = current.Next;
+                    }
+                    // It will never execute this
+                    return null;
+                }
+
+                // Retornara el nodo que se encuentra en el indice dado
+                public ListNode GetNode(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    ListNode current = this.Start;
+                    for (int list_index = 0; list_index < this.size; list_index++) {
+                        if (list_index == index) {
+                            return current;
+                        }
+                        current = current.Next;
+                    }
+                    // It will never execute this
+                    return null;
+                }
+
+                // Define si el objeto dado se encuentra en la lista
+                @Override
+                public ListNode search(Object object) {
+                    Iterator<ListNode> i = this.iterator();
+                    ListNode inode = Start;
+                    int cont = 0;
+                    while (cont < this.size) {
+
+                        if (inode.getObject().toString().equals(object.toString())) {
+                            return inode;
+                        }
+                        cont++;
+                        inode = inode.Next;
+                    }
+
+                    return null;
+                }
+
+                // Agrega un objeto al final de la lista
+                @Override
+                public boolean add(Object value) {
+                    try {
+                        this.insertTail(value);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Agrega un objeto en un nuevo nodo siguiente al nodo objetivo
+                @Override
+                public boolean insert(ListNode node, Object object) {
+                    try {
+                        if (node.Next == null) {
+                            add(object);
+                        } else {
+                            ListNode newNode = new ListNode(object);
+                            newNode.Next = node.Next;
+                            node.Next = newNode;
+                        }
+                        size++;
+                        this.update();
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Sobrecarga del metodo insert
+                @Override
+                public boolean insert(Object ob, Object object) {
+                    try {
+                        if (ob != null) {
+                            ListNode node = this.search(ob);
+                            if (node != null) {
+                                return insert(node, object);
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Inserta un nuevo elemento despues del nodo final
+                public boolean insertTail(Object value) {
+                    try {
+                        if (isEmpty() == true) {
+
+                            this.Start = new ListNode(value);
+                            this.End = this.Start;
+                            this.Start.Before = null;
+                        } else {
+                            ListNode old_end_node = this.End;
+                            this.End = new ListNode(value);
+                            this.End.Before = old_end_node;
+                            old_end_node.Next = this.End;
+                        }
+                        this.size++;
+                        this.update();
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Inserta un nodo al principio de la lista
+                @Override
+                public boolean insertHead(Object value) {
+                    try {
+                        if (isEmpty() == true) {
+                            this.Start = new ListNode(value);
+                            this.End = this.Start;
+                            this.Start.Before = null;
+
+                        } else {
+                            Start = new ListNode(value, Start);
+                            Start.Before = null;
+                        }
+                        this.size++;
+                        this.update();
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Remueve un nodo dado un indice
+                public void Remove(int index) {
+                    if (isEmpty() == true) {
+                        throw new IndexOutOfBoundsException("List is empty");
+                    }
+                    if (index >= this.size) {
+                        throw new IndexOutOfBoundsException("Index out of range");
+                    }
+                    if (this.size == 1) {
+                        // The list has only one Node
+                        this.Start = null;
+                        this.End = null;
+                    } else if (index == 0) {
+                        // First Node
+                        this.Start = this.Start.Next;
+                        this.Start.Before = null;
+                    } else if (index == this.size - 1) {
+                        // Last Node
+                        this.End = this.End.Before;
+                        this.End.Next = null;
+                    } else {
+                        // Any middle node
+                        ListNode current = this.Start;
+                        for (int list_index = 0; list_index < this.size; list_index++) {
+                            if (list_index == index) {
+                                // Node1 -> Node2 -> Node3
+                                // Node1 -> Node3
+                                current.Before.Next = current.Next;
+                                current.Next.Before = current.Before;
+                                break;
+                            }
+                            current = current.Next;
+                        }
+                    }
+                    this.size--;
+                    this.update();
+
+                }
+
+                // Remueve un nodo dado un nodo
+                @Override
+                public boolean remove(ListNode node) {
+                    try {
+
+                        int index = this.GetIndex(node.getObject());
+                        this.Remove(index);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Remueve un nodo dado un objeto
+                @Override
+                public boolean remove(Object object) {
+                    try {
+                        int index = this.GetIndex(object);
+                        this.Remove(index);
+                        return true;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // Define si el objeto se encuentra en la lista
+                @Override
+                public boolean contains(Object object) {
+                    if (this.search(object) == null) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+
+                // Pasa los elementos de la lista a un array
+                @Override
+                public Object[] toArray() {
+                    Object[] arrayOfObjects = new Object[this.size];
+                    for (int i = 0; i < this.size; i++) {
+                        arrayOfObjects[i] = this.Get(i);
+                    }
+                    return arrayOfObjects;
+                }
+
+                // Pasa los elementos de la lista a un array dado
+                @Override
+                public Object[] toArray(Object[] arrayOfObjects) {
+                    for (int i = 0; i < this.size; i++) {
+                        arrayOfObjects[i] = this.Get(i);
+                    }
+                    return arrayOfObjects;
+                }
+
+                // Retorna el nodo anterior al nodo dado
+                @Override
+                public ListNode getBeforeTo(ListNode node) {
+                    ListNode current = this.search(node.getObject());
+                    current = current.Before;
+                    return current;
+                }
+
+                // Retorna el nodo siguiente al nodo dado
+                @Override
+                public Object getNextTo(ListNode node) {
+                    ListNode current = this.search(node.getObject());
+                    current = current.Next;
+                    return current;
+                }
+
+                // Retorna una lista que ira de argumento hasta argumento
+                @Override
+                public CircularDoubleLinkedList subList(ListNode from, ListNode to) {
+                    if (this.contains(from.getObject()) == true && this.contains(to.getObject()) == true) {
+                        int indexFrom = this.GetIndex(from.getObject());
+                        int indexTo = this.GetIndex(to.getObject());
+                        CircularDoubleLinkedList subList = new CircularDoubleLinkedList();
+
+                        for (int i = 0; i < this.size; i++) {
+                            if (i >= indexFrom && i < indexTo) {
+                                subList.add(this.Get(i));
+                            }
+                        }
+
+                        return subList;
+                    } else {
+                        throw new IndexOutOfBoundsException("At least one of the two nodes are not in list");
+                    }
+                }
+
+                // Iterara toda la lista
+                @Override
+                public Iterator<ListNode> iterator() {
+                    inode = Start;
+                    return new Iterator<ListNode>() {
+                        @Override
+                        public ListNode next() {
+                            ListNode tmp = inode;
+                            inode = inode.Next;
+                            return tmp;
+                        }
+
+                        @Override
+                        public boolean hasNext() {
+                            return inode != null;
+                        }
+
+                    };
+                }
+
+                // Iterara la lista en reversa
+                public Iterator<ListNode> RevIterator() {
+                    inode = End;
+                    return new Iterator<ListNode>() {
+                        @Override
+                        public ListNode next() {
+                            ListNode tmp = inode;
+                            inode = inode.Before;
+                            return tmp;
+
+                        }
+
+                        @Override
+                        public boolean hasNext() {
+                            return inode != null;
+                        }
+                    };
+                }
+
+                // Creara la circularidad en la lista doble, este metodo
+                // se ejecuta en cada metodo que necesite la circularidad
+                public void update() {
+                    if (isEmpty() == false) {
+                        if (this.End != null) {
+                            Start.Before = End;
+                            End.Next = Start;
+                        } else {
+                            Start.Next = Start;
+                            Start.Before = Start;
+                        }
+                    }
+                }
+
+                // Ordenara la lista si es de numeros
+                @Override
+                public CircularDoubleLinkedList sortList() {
+                    CircularDoubleLinkedList sortedList = new CircularDoubleLinkedList();
+                    // Node current will point to head 
+                    ListNode current = this.Start, index = null;
+
+                    int temp;
+
+                    if (this.Start == null) {
+                        return null;
+                    } else {
+                        while (current != null) {
+                            index = current.Next;
+
+                            while (index != null) {
+                                if ((int) current.Value > (int) index.Value) {
+                                    temp = (int) current.Value;
+                                    current.Value = index.Value;
+                                    index.Value = temp;
+
+                                }
+
+                                index = index.Next;
+                            }
+                            sortedList.add(current.Value);
+                            current = current.Next;
+                        }
+                    }
+                    return sortedList;
+                }
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
+        <h1>Pila dimanica</h1><br><br>
+        <p>
+        <h2>Estructura  </h2><br>
+        <p id="piladinamica">
+            Esta estructura se compone de una clase pila y una clase nodo
+        </p>
+        <pre>
+            <code class="language-java">
+                // Clase nodo, atributos y metodos
+                public class Node {
+                    public Object Value;
+                    public Node Next;
+                  
+                    public Node(){
+                        this.Value=null;
+                        this.Next=null;
+                    }
+                    
+                    public Node(Object value) {
+                        this.Value = value;
+                        this.Next = null;
+                    }
+                    
+                    public Node(Object object, Node next) {
+                        this.Value = object;
+                        this.Next = next;
+                    }
+                
+                    public Object getObject() {
+                        return Value;
+                    }
+                
+                    public void setObject(Object object) {
+                        this.Value = object;
+                    }
+                
+                    public boolean isEquals(Object object) {
+                        if (this.getObject().toString().equals(object.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    public boolean isEquals(Node node) {
+                        if (this.toString().equals(node.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                    
+                    @Override
+                    public String toString() {
+                        return "StackNode{" +
+                                "object=" + Value +
+                                ", next=" + Next +
+                                '}';
+                    }
+                }
+                // Clase pila, atributos y constructor
+                public class Stack implements Iterable<Node>, StackInterface {
+
+                    Node top;
+                    int size;
+                    Node inode;
+                
+                    public Stack() {
+                        this.top = null;
+                        this.size = 0;
+                    }
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                // Retornara el tamaño de la pila
+                @Override
+                public int size() {
+                    return size;
+                }
+
+                // Aclarara si la pila esta vacia o no
+                @Override
+                public boolean isEmpty() {
+                    if (top == null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+                // Insertara un valor alfinal de la pila o en el tope de esta
+                @Override
+                public boolean push(Object val) {
+                    try {
+                        if (top == null) {
+                            top = new Node(val);
+                            size++;
+                            return true;
+                        } else {
+                            Node t = new Node(val);
+                            t.Next = top;
+                            top = t;
+                            size++;
+                            return true;
+                        }
+                    } catch (Exception e) {
+                        return false;
+                    }
+
+                }
+
+                // Retornorá el objeto alfinal de la pila o en su tope y lo eliminara de esta
+                @Override
+                public Object pop() {
+                    if (top == null) {
+                        throw new IndexOutOfBoundsException("Stack is empty");
+                    } else if (size == 1) {
+                        Object popped = top.Value;
+                        top = null;
+                        size--;
+                        return popped;
+                    } else {
+                        Object popped = top.Value;
+                        top = top.Next;
+                        size--;
+                        return popped;
+                    }
+                }
+
+                // Retornará el objeto alfinal de la pila o en su tope
+                @Override
+                public Object peek() {
+                    if (top == null) {
+                        throw new IndexOutOfBoundsException("Stack is empty");
+                    } else {
+                        Object popped = top.Value;
+                        return popped;
+                    }
+                }
+
+                // Eliminará todos los elementos dentro de la pila
+                @Override
+                public void clear() {
+                    int origSize = this.size;
+                    for (int i = 0; i < origSize; i++) {
+                        this.pop();
+                    }
+                }
+
+                // Definira si un objeto dado se encuentra dentro de la pila
+                @Override
+                public boolean search(Object object) {
+                    Iterator<Node> i = this.iterator();
+                    Node inode;
+                    while ((inode = i.next()) != null) {
+                        if (inode.getObject().toString().equals(object.toString())) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+
+                // Iterara dentro de la pila de principio a fin
+                @Override
+                public Iterator<Node> iterator() {
+                    inode = top;
+                    return new Iterator<Node>() {
+                        @Override
+                        public boolean hasNext() {
+                            return inode.Next != null;
+                        }
+
+                        @Override
+                        public Node next() {
+                            if (inode != null) {
+                                Node tmp = inode;
+                                inode = inode.Next;
+                                return tmp;
+                            } else {
+                                return null;
+                            }
+                        }
+                    };
+                }
+
+                // Ordenara la pila
+                @Override
+                public void sort() {
+                    int origSize = this.size;
+                    Double[] arr = new Double[origSize];
+                    try {
+                        for (int i = 0; i < origSize; i++) {
+                            Double a = new Double(this.pop().toString());
+                            arr[i] = a;
+
+                        }
+
+                        for (int i = 0; i < arr.length; i++) {
+                            for (int j = i + 1; j < arr.length; j++) {
+                                double tmp = 0;
+                                if ((double) arr[i] > (double) arr[j]) {
+                                    tmp = (double) arr[i];
+                                    arr[i] = arr[j];
+                                    arr[j] = tmp;
+                                }
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Not sortable type");
+                    } finally {
+                        for (int i = 0; i < origSize; i++) {
+                            this.push(arr[i]);
+                        }
+                    }
+
+                }
+
+                // Invertira el orden de la pila
+                @Override
+                public void reverse() {
+
+                    int origSize = this.size;
+                    Stack revStack = new Stack();
+
+                    for (int i = 0; i < origSize; i++) {
+                        revStack.push(this.pop());
+                    }
+                    this.top = revStack.top;
+                    
+                    this.size = revStack.size;
+                }
+
+                // Entregara un String de la pila
+                @Override
+                public String toString() {
+
+                    String pilaString = "";
+
+                    for (Node nodo : this) {
+                        pilaString = "[" + nodo.Value + "]" + pilaString;
+                    }
+                    this.reverse();// Working on improving it
+                    pilaString = "[" + this.top.Value.toString() + "]" + pilaString;// Working on improving it
+                    this.reverse();// Working on improving it
+                    return pilaString;
+                }
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
+        <h1>Pila basa en arreglos</h1><br><br>
+        <p>
+        <h2>Estructura  </h2><br>
+        <p id="pilaarray">
+            Esta estructura se compone se una sola clase ArrayStack
+        </p>
+        <pre>
+            <code class="language-java">
+                // Clase Stack, atributos y constructor
+                public class ArrayStack implements StackInterface {
+
+                    private int size;
+                    private Object[] array;
+                    private int top;
+                
+                    public ArrayStack(int size) {
+                        this.size = size;
+                        this.array = new Object[(size > 0) ? size : 1];
+                        clear();
+                    }
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                // Eliminará todos los elementos dentro de la pila
+                @Override
+                public void clear() {
+                    for (int i = 0; i < array.length; i++) {
+                        array[i] = null;
+                    }
+                    top = -1;
+                }
+
+                // Aclarara si la pila esta vacia o no
+                @Override
+                public boolean isEmpty() {
+                    return array[0] == null;
+                }
+
+                // Retornará el objeto alfinal de la pila o en su tope
+                @Override
+                public Object peek() {
+                    return (!isEmpty()) ? array[top] : null;
+                }
+
+                // Retornará el objeto alfinal de la pila o en su tope y lo eliminara de esta
+                @Override
+                public Object pop() {
+                    if (!isEmpty()) {
+                        Object object = array[top];
+                        array[top--] = null;
+                        return object;
+                    } else {
+                        return null;
+                    }
+                }
+
+                // Insertara un objeto alfinal de la pila o en el tope de esta
+                @Override
+                public boolean push(Object object) {
+                    if (top + 1 < size) {
+                        try {
+                            array[++top] = object;
+                            return true;
+                        } catch (Exception e) {
+                            System.out.println(e);
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+
+                // Retornara el tamaño de la pila
+                @Override
+                public int size() {
+                    return top + 1;
+                }
+
+                // Definira si un objeto dado se encuentra dentro de la pila
+                @Override
+                public boolean search(Object object) {
+                    if(this.isEmpty()){
+                        throw new IndexOutOfBoundsException("Stack is empty");
+                    }
+                    return false;
+                }
+
+                // Ordenara la pila
+                @Override
+                public void sort() {
+                    int origSize = this.size;
+                    Double[] arr = new Double[origSize];
+                    try {
+                        for (int i = 0; i < origSize; i++) {
+                            Double a = new Double(this.pop().toString());
+                            arr[i] = a;
+
+                        }
+
+                        for (int i = 0; i < arr.length; i++) {
+                            for (int j = i + 1; j < arr.length; j++) {
+                                double tmp = 0;
+                                if ((double) arr[i] > (double) arr[j]) {
+                                    tmp = (double) arr[i];
+                                    arr[i] = arr[j];
+                                    arr[j] = tmp;
+                                }
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Not sortable type");
+                    } finally {
+                        for (int i = 0; i < origSize; i++) {
+                            this.push(arr[i]);
+                        }
+                    }
+                }
+
+                // Invertira el orden de la pila
+                @Override
+                public void reverse() {
+                    int origSize = this.size;
+                    ArrayStack revStack = new ArrayStack(origSize);
+
+                    for (int i = 0; i < origSize; i++) {
+                        revStack.push(this.pop());
+                    }
+                    this.top = revStack.top;
+                    this.size = revStack.size;
+                }
+
+                // Entregara un String de la pila
+                @Override
+                public String toString() {
+                    return "ArrayStack{" +
+                            "size=" + size +
+                            ", array=" + Arrays.toString(array) +
+                            ", top=" + top +
+                            '}';
+                }
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
+        <h1>Cola dinamica</h1><br><br>
+        <p>
+        <h2>Estructura  </h2><br>
+        <p id="coladinamica">
+            Esta estructura se compone de una clase nodo y una clase cola
+        </p>
+        <pre>
+            <code class="language-java">
+                // Clase nodo, atributos y metodos
+                public class Node {
+                    public Object Value;
+                    public Node Next;
+                    public Node Before;
+                  
+                    public Node(){
+                        this.Value=null;
+                        this.Next=null;
+                        this.Before=null;
+                    }
+                    
+                    public Node(Object value) {
+                        this.Value = value;
+                        this.Next = null;
+                    }
+                    
+                    public Node(Object object, Node next) {
+                        this.Value = object;
+                        this.Next = next;
+                    }
+                
+                    public Object getObject() {
+                        return Value;
+                    }
+                
+                    public void setObject(Object object) {
+                        this.Value = object;
+                    }
+                
+                    public boolean isEquals(Object object) {
+                        if (this.getObject().toString().equals(object.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                
+                    public boolean isEquals(Node node) {
+                        if (this.toString().equals(node.toString())) {
+                            return true;
+                        }
+                        return false;
+                    }
+                    
+                    @Override
+                    public String toString() {
+                        return "StackNode{" +
+                                "object=" + Value +
+                                ", next=" + Next +
+                                '}';
+                    }
+                    //Clase Cola, atributos y constructor
+                    public class Queue implements Iterable<Node>,QueueInterface{
+                        Node Start;
+                        Node End;
+                        int size;
+                        Node inode;
+                        
+                        public Queue() {
+                            this.Start = null;
+                            this.End=null;
+                            this.size = 0;
+                        }
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                // Retornara el tamaño de la cola
+                @Override
+                public int size(){
+                    return this.size;
+                }
+                
+                // Aclarara si la cola esta vacia o no
+                @Override
+                public boolean isEmpty(){
+                    if (Start == null && size==0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                
+                // Eliminará todos los elementos dentro de la cola
+                public void clear(){
+                    this.End=null;
+                    this.Start=null;
+                    this.size=0;
+                }
+                
+                // insertara un objeto al final de la cola
+                @Override
+                public boolean insert(Object object){
+                    try {
+                        if (Start == null) {
+                            Start = End = new Node(object);
+                            size++;
+                            return true;
+                        } else{
+                            Node t = new Node(object);
+                            End.Next=t;
+                            End= End.Next;
+                            size++;
+                            return true;
+                        }
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+
+                // retornara el objeto al principio de la cola y lo eliminara de esta
+                @Override
+                public Object extract() {
+                    if (Start == null) {
+                        throw new IndexOutOfBoundsException("Queue is empty");
+                    } else if (size == 1) {
+                        Object extracted = Start.Value;
+                        Start = Start.Next;
+                        size--;
+                        return extracted;
+                    } else {
+                        Object extracted = Start.Value;
+                        Start=Start.Next;
+                        size--;
+                        return extracted;
+                    }
+                }
+                
+                // Definira si un objeto dado se encuentra dentro de la pila
+                @Override
+                public boolean search(Object object) {
+                    Iterator<Node> i = this.iterator();
+                    Node inode;
+                    while ((inode = i.next()) != null) {
+                        if (inode.getObject().toString().equals(object.toString())) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                
+                // Ordenara la cola si es de numeros
+                @Override
+                public void sort() {
+                    int origSize = this.size;
+                    Double[] arr = new Double[origSize];
+                    try {
+                        for (int i = 0; i < origSize; i++) {
+                            Double a = new Double(this.extract().toString());
+                            arr[i] = a;
+            
+                        }
+            
+                        for (int i = 0; i < arr.length; i++) {
+                            for (int j = i + 1; j < arr.length; j++) {
+                                double tmp = 0;
+                                if ((double) arr[i] > (double) arr[j]) {
+                                    tmp = (double) arr[i];
+                                    arr[i] = arr[j];
+                                    arr[j] = tmp;
+                                }
+                            }
+            
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Not sortable type");
+                    } finally {
+                        for (int i = 0; i < origSize; i++) {
+                            this.insert(arr[i]);
+                        }
+                    }
+            
+                }
+
+                // Invertira el orden de la cola
+                @Override
+                public void reverse() {
+            
+                    int origSize = this.size;
+                    Queue revQueue = new Queue();
+                    Object[] arr=new Object[origSize];
+                    for (int i = 0; i < origSize; i++) {
+                        arr[i]=this.extract();
+                    }
+                    for(int j = origSize-1; j >= 0; j=j-1){
+                        revQueue.insert(arr[j]);
+                    }
+                    
+                    this.Start=revQueue.Start;
+                    this.End=revQueue.End;
+                    this.size=revQueue.size;
+                    
+                }
+                
+                // Iterara dentro de la cola de principio a fin
+                @Override
+                public Iterator<Node> iterator() {
+                    inode = Start;
+                    return new Iterator<Node>() {
+                        @Override
+                        public boolean hasNext() {
+                            return inode.Next != null;
+                        }
+            
+                        @Override
+                        public Node next() {
+                            if (inode != null) {
+                                Node tmp = inode;
+                                inode = inode.Next;
+                                return tmp;
+                            } else {
+                                return null;
+                            }
+                        }
+                    };
+                }
+                
+                // Entregara un String de la cola
+                @Override
+                public String toString(){
+                    if(this.isEmpty()==false){
+                    Iterator<Node>  ite = this.iterator();
+                    String queue =new String();
+                    while(ite.hasNext()){
+                        queue=queue+"["+ ite.next().Value.toString()+"]";
+                    }
+                    queue=queue+"["+End.Value.toString()+"]";
+                    return queue;
+                    }
+                    else throw new IndexOutOfBoundsException("Queue is empty"); 
+                }
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
+        <h1>Cola basada en arreglos</h1><br><br>
+        <p>
+        <h2>Estructura  </h2><br>
+        <p id="colaarray">
+            Esta estructura se compone de una sola clase cola
+        </p>
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
         <h1>Arboles binarios</h1><br><br>
         <p>
         <h2>Estructura  </h2><br>
-        <p></p>
-        <h2>Metodos </h2><br>
-        <p></p>
+        <p id="arbolbinario">
+            Esta estructura se compone de una sola clase cola
         </p>
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
         <h1>Arboles n-narios</h1><br><br>
         <p>
         <h2>Estructura  </h2><br>
-        <p></p>
-        <h2>Metodos </h2><br>
-        <p></p>
+        <p id="arbolninario">
+            Esta estructura se compone de una sola clase cola
         </p>
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
         <h1>Tablas de Hash</h1><br><br>
         <p>
         <h2>Estructura  </h2><br>
-        <p></p>
-        <h2>Metodos </h2><br>
-        <p></p>
+        <p id="tablahash">
+            Esta estructura se compone de una sola clase cola
         </p>
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
         <h1>Grafos</h1><br><br>
         <p>
         <h2>Estructura  </h2><br>
-        <p></p>
-        <h2>Metodos </h2><br>
-        <p></p>
+        <p id="grafo">
+            Esta estructura se compone de una sola clase cola
         </p>
-
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        <h2>Metodos </h2><br>
+        <pre>
+            <code class="language-java">
+                
+            </code>
+        </pre>
+        </p>
+        <h2><a href="#estructuras">Inicio</a></h2><br>
 
     </div>
+    <script src="prism.js"></script> 
 </body>
 
 </html>
