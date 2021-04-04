@@ -145,18 +145,218 @@
         <p>
         <h2>Estructura </h2><br>
         <p id="listaenlazada">
-            // Ingresar aqui una breve descripcion de la clase. 
-            EJ:Esta estructura se compone de una clase nodo y una clase lista.
+            Esta estructura se compone de una clase nodo y una clase lista.
         </p>
         <pre>
                         <code class="language-python">
-                            
+                            #Se crea la clase del nodo
+                            class Node(object):
+                                #Se inicializan los valores
+                                def __init__(self, object=None, next=None, before=None):
+                                    self.object = object
+                                    self.next = next
+                                    self.before = before
+
+                                #Muestra el valor del objeto
+                                def getObject(self):
+                                    return self.object
+
+                                #Muestra el valor del siguiente objeto
+                                def getNext(self):
+                                    return self.next
+
+                                #Modifica el valor del siguiente objeto
+                                def setNext(self, next):
+                                    self.next = next
+
+                                #Muestra el valor del anterior objeto
+                                def getBefore(self):
+                                    return self.before
+
+                                #Modifica el valor del anterior objeto
+                                def setBefore(self, before):
+                                    self.before = before
+
+
+                            #Se crea la clase de la lista
+                            class List(object):
+                                #Se inicializan los valores
+                                def __init__(self, head=None):
+                                    self.head = head
+                                    self.tail = head
+                                    self.length = 0
+
+                                #se inicializan el iterador
+                                def __iter__(self):
+                                    inode = self.head
+                                    for i in range(self.length):
+                                        yield inode.object
+                                        inode = inode.next
                         </code>
                     </pre>
         <h2>Metodos </h2><br>
         <pre>
                         <code class="language-python">
-                            
+                            def isEmpty(self):
+                                return self.head is None
+
+                            #Retorna la cantidad de objetos
+                            def getSize(self):
+                                inode = self.head
+                                count = 0
+                                while inode:
+                                    count += 1
+                                    inode = inode.getNext()
+                                return count
+
+                            #Se borran todos los elementos de la lista
+                            def clear(self):
+                                self.head = None
+                                self.tail = None
+                                self.length = 0
+
+                            #Se obtiene el primer valor de la lista
+                            def getHead(self):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                return self.head.object
+
+                            #Se obtiene el ultimo valor de la lista
+                            def getTail(self):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                return self.tail.object
+
+                            #Se busca un objeto en la lista
+                            def search(self, object):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                inode = self.head
+                                for i in range(self.length):
+                                    if inode.object == object:
+                                        return i
+                                    inode = inode.next
+                                return -1
+
+                            def find(self, data):
+                                if self.length == 0:
+                                    raise IndexError("The list is empty")
+                                current = self.head
+                                for list_index in range(self.length):
+                                    if current.data == data:
+                                        return list_index
+                                    current = current.next_node
+                                return -1
+
+                            #Se añade un objeto a la lista
+                            def add(self, object):
+                                if self.length == 0:
+                                    self.head = Node(object)
+                                    self.tail = self.head
+                                else:
+                                    old_tail = self.tail
+                                    new_tail = Node(object, before=old_tail)
+                                    old_tail.next_node = new_tail
+                                    self.tail = new_tail
+                                self.length += 1
+
+                            #Se añade un valor a la lista
+                            def insert(self, index, object):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                if self.length == 1:
+                                    old_head = self.head
+                                    new_head = Node(object)
+                                    new_head.next = old_head
+                                    self.head = new_head
+                                    self.tail = old_head
+                                    self.tail.before = self.head
+                                elif index == 0:
+                                    old_head = self.head
+                                    new_head = Node(object, old_head)
+                                    old_head.before = new_head
+                                    self.head = new_head
+                                elif index == self.length - 1:
+                                    new_node = Node(object, self.tail, self.tail.before)
+                                    self.tail.before.next_node = new_node
+                                    self.tail.before = new_node
+                                else:
+                                    inode = self.head
+                                    for i in range(self.length):
+                                        if index == i:
+                                            new_node = Node(object, inode, inode.before)
+                                            inode.before.next_node = new_node
+                                            inode.before = new_node
+                                        inode = inode.next_node
+                                self.length += 1
+
+                            def get(self, index):
+                                if self.length == 0:
+                                    raise IndexError("The list is empty")
+                                if index >= self.length:
+                                    raise IndexError("Index out of range")
+                                current_node = self.head
+                                for list_index in range(self.length):
+                                    if list_index == index:
+                                        return current_node.data
+                                    current_node = current_node.next_node
+
+                            #Se inserta un objeto a la primera posicion
+                            def insertHead(self, object):
+                                self.insert(0, object)
+
+                            #Se inserta un objeto a la ultima posicion
+                            def insertTail(self, object):
+                                self.insert(self.length - 1, object)
+
+                            #Se elimina un valor de la lista
+                            def remove(self, index):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                if self.length == 1:
+                                    self.clear()
+                                    return
+                                elif index == 0:
+                                    self.head.next_node.before = None
+                                    self.head = self.head.next_node
+                                elif index == self.length - 1:
+                                    self.tail.before.next_node = None
+                                    self.tail = self.tail.before
+                                else:
+                                    inode = self.head
+                                    for i in range(self.length):
+                                        if index == i:
+                                            inode.next_node.before = inode.before
+                                            inode.before.next_node = inode.next_node
+                                        inode = inode.next_node
+                                self.length -= 1
+
+                            def contains(self, object):
+                                return self.find(object) != -1
+
+                            #Se crea una lista definiendo el inicio y el fin
+                            def subList(self, From, To):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                if To > self.length:
+                                    To = self.length
+                                subList = List()
+                                var = False
+                                node = self.head
+                                for i in range(self.length):
+                                    if i == From:
+                                        subList.add(node.object)
+                                        var = True
+                                        if From == To:
+                                            break
+                                    elif var and i < To:
+                                        subList.add(node.object)
+                                    node = node.next
+                                return subList
+
+                            #Se muestran todos los valores de la lista
+                            def toString(self):
+                                return list(n for n in self)
                         </code>
                     </pre>
         </p>
