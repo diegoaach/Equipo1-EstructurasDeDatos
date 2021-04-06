@@ -668,10 +668,12 @@
                                     inode = inode.next
                                 return -1
 
+                            #Se añade un objeto a la lista
                             def add(self, obj: object):
                                 self.content.add(obj)
                                 self.update()
 
+                            #Se inserta un objeto a la lista
                             def insert(self, index: int, obj: object):
                                 self.content.insert(index, obj)
                                 self.update()
@@ -762,13 +764,141 @@
                                 #Se actualizan los valores
                                 def update(self, object: object):
                                     self.object = object
+
+
+                            #Se crea la lista
+                            class DoubleCircularList(object):
+                                #Se inicializan los valores
+                                def __init__(self):
+                                    self.size = 0
+                                    self.content = DoubleList.DoubleList()
+                            
+                                #Metodo iterador
+                                def __iter__(self):
+                                    yield from self.content
+                            
+                                #Se actualizan los valores
+                                def update(self):
+                                    if self.content.head is not None:
+                                        self.content.head.before = self.content.tail
+                                    if self.content.tail is not None:
+                                        self.content.tail.next = self.content.head
+                                    self.size = self.content.size
                                 
                         </code>
                     </pre>
         <h2>Metodos </h2><br>
         <pre>
                         <code class="language-python">
-                            
+                            #Retorna un true si la lista esta vacia y no si tiene objectos
+                            def isEmpty(self):
+                                return self.head is None
+
+                            #Retorna la cantidad de objetos
+                            def getSize(self):
+                                return self.size
+
+                            def clear(self):
+                                self.content.clear()
+                                self.update()
+
+                            #Se obtiene el primer valor de la lista
+                            def getHead(self):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                return self.head.object
+
+                            #Se obtiene el ultimo valor de la lista
+                            def getTail(self):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                return self.tail.object
+
+                            #Se busca un objeto en la lista
+                            def search(self, object):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                inode = self.head
+                                for i in range(self.size):
+                                    if inode.object == object:
+                                        return i
+                                    inode = inode.next
+                                return -1
+
+                            #Se añade un objeto a la lista
+                            def add(self, obj: object):
+                                self.content.add(obj)
+                                self.update()
+
+                            #Se inserta un objeto a la lista
+                            def insert(self, index: int, obj: object):
+                                self.content.insert(index, obj)
+                                self.update()
+
+                            #Se inserta un objeto a la primera posicion
+                            def insertHead(self, object):
+                                self.insert(0, object)
+
+                            #Se inserta un objeto a la ultima posicion
+                            def insertTail(self, object):
+                                self.insert(self.size - 1, object)
+
+                            #Se elimina un objeto de la lista
+                            def remove(self, obj: object):
+                                self.content.remove(obj)
+                                self.update()
+
+                            #Se elimina un nodo de la lista
+                            def remove_node(self, node: ListNode.ListNode):
+                                self.content.remove_node(node)
+
+                            #Metodo si contiene un objeto
+                            def contains(self, item):
+                                try:
+                                    self.index(item)
+                                    return True
+                                except ValueError:
+                                    return False
+
+                            #Se crea una lista definiendo el inicio y el fin
+                            def subList(self, From, To):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                if To > self.size:
+                                    To = self.size
+                                subList = DoubleList()
+                                var = False
+                                inode = self.head
+                                for i in range(self.size):
+                                    if i == From:
+                                        subList.add(inode.object)
+                                        var = True
+                                        if From == To:
+                                            break
+                                    elif var and i < To:
+                                        subList.add(inode.object)
+                                    inode = inode.next
+                                return subList
+
+                            #Transforma la lista a un array
+                            def toArray(self):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                else:
+                                    array = [self.size]
+                                    inode = self.head
+                                    for i in range(self.size):
+                                        array[i] = inode.object
+                                        inode = inode.next
+                                    return array
+
+                            #Metodo de posicion de los objetos
+                            def index(self, obj: object) -> int:
+                                return self.content.index(obj)
+
+                            #Se muestran todos los objetos de la lista
+                            def toString(self):
+                                return [node.object for node in self]
                         </code>
                     </pre>
         </p>
