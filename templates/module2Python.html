@@ -616,6 +616,10 @@
                                 def __init__(self):
                                     self.size = 0
                                     self.content = DoubleList.DoubleList()
+
+                                #Metodo de iterador
+                                def __iter__(self):
+                                    yield from self.content
                             
                                 #Se actualizan los valores
                                 def update(self):
@@ -971,18 +975,74 @@
         <p>
         <h2>Estructura </h2><br>
         <p id="colaarray">
-            // Ingresar aqui una breve descripcion de la clase. 
-            EJ:Esta estructura se compone de una clase nodo y una clase lista.
+            Esta estructura se compone de una clase lista.
         </p>
         <pre>
                         <code class="language-python">
-                            
+                            #Se crea la clase
+                            class ArrayStack(object):
+                                #Se inicializan los valores
+                                def __init__(self, size: int):
+                                    self.max = size
+                                    self.size = 0
+                                    self.content = [None] * size
+                                    self.reversed = False
                         </code>
                     </pre>
         <h2>Metodos </h2><br>
         <pre>
                         <code class="language-python">
-                            
+                            #Metodo de vaciar lista
+                            def clear(self):
+                                self.content.clear()
+
+                            #Metodo de si esta vacio
+                            def isEmpty(self) -> bool:
+                                return self.size == 0
+
+                            #metodo para mirar
+                            def peek(self):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                if self.reversed:
+                                    return self.content[self.size - 1]
+                                return self.content[0]
+
+                            #metodo para quitar
+                            def pop(self):
+                                if self.isEmpty():
+                                    raise IndexError("la lista esta vacia")
+                                if self.reversed:
+                                    value = self.content[self.size - 1]
+                                    self.content[self.size - 1] = None
+                                    self.size -= 1
+                                    return value
+                                value = self.content[0]
+                                self.content = [*self.content[1:], None]
+                                self.size -= 1
+                                return value
+
+                            #Metodo para apilar
+                            def push(self, obj: object):
+                                if self.size == self.max:
+                                    raise IndexError("Alcanzó el tamaño máximo de pila")
+                                if self.reversed:
+                                    self.content[self.size] = obj
+                                else:
+                                    self.content = [obj, *self.content[:-1]]
+                                self.size += 1
+
+                            #Metodo de tamaño
+                            def size(self):
+                                return self.size
+
+                            #Metodo de buscar
+                            def search(self, obj: object) -> bool:
+                                return obj in self.content
+
+                                #Metodo de reversa
+                            def reverse(self):
+                                self.reversed = not self.reversed
                         </code>
                     </pre>
         </p>
