@@ -126,7 +126,9 @@
             
         <br>
         <h1>Paradigma </h1><br><br>
-        <p></p>
+        <p>
+            Oriendado a objetos
+        </p><br>
         <h1>Ventajas y desventajas </h1><br><br>
         <p></p>
         <h1 id="estructuras"> Estructuras : </h1><br>
@@ -2648,17 +2650,297 @@
         <p>
         <h2>Estructura  </h2><br>
         <p id="arbolbinario">
-            Esta estructura se compone de una sola clase cola
+            Esta estructura se compone de una clase arbol, con una clase local nodo.
         </p>
         <pre>
             <code class="language-java">
+                // Clase nodo con su constructores y metodos
+                class Node {
+
+                    Object value;
+                    Node left;
+                    Node right;
                 
+                    Node(Object value) {
+                        this.value = value;
+                        right = null;
+                        left = null;
+                    }
+                
+                    Node(Node left, Object value, Node right) {
+                        this.value = value;
+                        this.right = right;
+                        this.left = left;
+                    }
+                
+                
+                
+                
+                    Node findSuccessor() {
+                        if (this.left == null) {
+                            return this;
+                        } else {
+                            return this.left.findSuccessor();
+                        }
+                    }
+
+                    
+                    public Node findPredecessor() {
+                        if (this.right == null) {
+                            return this;
+                        } else {
+                            return this.right.findPredecessor();
+                        }
+                    }
+                }
+                
+                // Clase arbol con sus constructores
+                public class BinaryTree {
+                
+                    Node root;
+                
+                    public BinaryTree() {
+                        this.root = null;
+                
+                    }
+                
+                    public BinaryTree(Object value) {
+                        this.root = subBinTree(null, value, null);
+                    }
             </code>
         </pre>
         <h2>Metodos </h2><br>
         <pre>
             <code class="language-java">
+                public Node subBinTree(Node left, Object value, Node right) {
+                    return new Node(left, value, right);
+                }
+            
+                public boolean isEmpty() {
+                    return root == null;
+                }
+            
+                // the node argument must be the root to go through 
+                // all the binary tree
+                public void preorder(Node node) {
+                    if (node == null) {
+                        return;
+                    }
+            
+                    System.out.print(node.value + " ");
+                    preorder(node.left);
+                    preorder(node.right);
+                }
+            
+                // the node argument must be the root to go through 
+                // all the binary tree
+                public void postorder(Node node) {
+                    if (node == null) {
+                        return;
+                    }
+            
+                    postorder(node.left);
+                    postorder(node.right);
+                    System.out.print(node.value + " ");
+                }
+            
+                // the node argument must be the root to go through 
+                // all the binary tree
+                public void inorder(Node node) {
+                    if (node == null) {
+                        return;
+                    }
+            
+                    inorder(node.left);
+                    System.out.print(node.value + " ");
+                    inorder(node.right);
+                }
+            
+                // the node argument must be the root to search through 
+                // all the binary tree
+                public boolean search(Node node, Object value) {
+                    try {
+                        if (isEmpty()) {
+                            return false;
+                        } else if (node.value.equals(value)) {
+                            return true;
+                        }
+                        return search(node.left, value) || search(node.right, value);
+            
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+            
+                // the node argument must be the root to search through 
+                // all the binary tree
+                // if the node has already a son node in that direction,
+                // this method will return false and do nothing
+                public boolean insertR(Node node, Object target, Object value) {
+                    try {
+                        if (isEmpty()) {
+                            return false;
+                        } else if (node.value.equals(target) && node.right == null) {
+                            node.right = subBinTree(null, value, null);
+                            return true;
+                        } else {
+                            this.insertR(node.left, target, value);
+                            this.insertR(node.right, target, value);
+                            return false;
+                        }
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+            
+                // the node argument must be the root to search through 
+                // all the binary tree
+                // if the node has already a son node in that direction,
+                // this method will return false and do nothing
+                public boolean insertL(Node node, Object target, Object value) {
+                    try {
+                        if (isEmpty()) {
+                            return false;
+                        } else if (node.value.equals(target) && node.left == null) {
+                            node.left = subBinTree(null, value, null);
+                            return true;
+                        } else {
+                            this.insertL(node.left, target, value);
+                            this.insertL(node.right, target, value);
+                            return false;
+                        }
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
                 
+                //Remove left or right of a given node
+                //INCOMPLETE
+                public boolean removeL(Node node, Object target) {
+                    try {
+                        if (isEmpty()) {
+                            return false;
+                        } else if (node.value.equals(target) && node.left != null) {
+                            if (node.left.left == null && node.left.right == null) {
+                                
+                                node.left = null;
+                                return true;
+                            } else if (node.left.left != null && node.left.right == null) {
+                                
+                                node.left.left = node.left;
+                                node.left = null;
+                                return true;
+                                
+                            } else if (node.left.left == null && node.left.right != null) {
+                                
+                                node.left.right = node.left;
+                                node.left = null;
+                                return true;
+                            } else if (node.left.left != null && node.left.right != null) {
+                               
+                                Node aux = node.left.right.findSuccessor();
+                                if (!node.left.right.equals(node.left.right.findSuccessor())) {
+                                    aux.right = node.left.right;
+            
+                                }
+                                aux.left = node.left.left;
+                                return true;
+                            }
+            
+                        }
+                        this.removeL(node.left, target);
+                        this.removeL(node.right, target);
+                        
+                        return false;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+            
+                // the node argument must be the root to search through 
+                // all the binary tree
+                // Removes a node with the object in the argument, replaces 
+                // the removed node with its succesor, succesor node is the next node in inorder
+                public boolean remove(Node node, Object target) {
+                    try {
+                        if (isEmpty()) {
+                            return false;
+                        } else if (this.root.value.equals(target)) {
+            
+                            Node parent = node;
+                            Node aux = parent.right.findSuccessor();
+                            //Object pup = aux.value;
+                            //this.remove(root, aux.value);
+                            //parent.value = pup;
+            
+                            if(!node.right.equals(node.right.findSuccessor())){
+                                aux.right=node.right;
+                            }
+                            aux.left=node.left;
+                            root=aux;
+                            root.right.left=null;
+                            return true;
+                        } else if (node.right.value.equals(target)) {
+                            
+                            Node parent = node;
+                            Node son = node.right;
+                            if (son.left == null && son.right == null) {
+            
+                                parent.right = null;
+                                return true;
+                            } else if (son.left != null && son.right == null) {
+                                parent.left = son.left;
+                                son.left = null;
+                            } else if (son.left == null && son.right != null) {
+                                parent.right = son.right;
+                                son.right = null;
+                            } else if (son.left != null && son.right != null) {
+                                Node aux = son.right.findSuccessor();
+                                if (!son.right.equals(son.right.findSuccessor())) {
+                                    aux.right = son.right;
+                                }
+                                aux.left = son.left;
+                                parent.right = aux;
+                                return true;
+                            }
+            
+                        } else if (node.left.value.equals(target)) {
+                           
+                            Node parent = node;
+                            Node son = node.left;
+                            if (son.left == null && son.right == null) {
+                                
+                                parent.left = null;
+                                return true;
+                            } else if (son.left != null && son.right == null) {
+                                
+                                parent.left = son.left;
+                                son.left = null;
+                                return true;
+                            } else if (son.left == null && son.right != null) {
+                                
+                                parent.left = son.right;
+                                son.right = null;
+                                return true;
+                            } else if (son.left != null && son.right != null) {
+                                Node aux = son.right.findSuccessor();
+                                if (!son.right.equals(son.right.findSuccessor())) {
+                                    aux.right = son.right;
+                                }
+                                aux.left = son.left;
+                                parent.left = aux;
+                                return true;
+                            }
+            
+                        }
+                        return remove(node.left, target) || remove(node.right, target);
+            
+                    } catch (Exception e) {
+                        return false;
+                    }
+                }
+              
+            }
             </code>
         </pre>
         </p>
