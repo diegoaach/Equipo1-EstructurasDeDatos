@@ -933,7 +933,7 @@
         <p>
         <h2>Estructura </h2><br>
         <p id="pilaarray">
-            Esta estructura se compone de una clase lista.
+            Esta estructura se compone de una clase ArrayStack.
         </p>
         <pre>
                         <code class="language-python">
@@ -950,7 +950,7 @@
         <h2>Metodos </h2><br>
         <pre>
                         <code class="language-python">
-                            #Metodo de vaciar lista
+                            #Metodo de vaciar la pila
                             def clear(self):
                                 self.content.clear()
 
@@ -1030,17 +1030,73 @@
         <p>
         <h2>Estructura </h2><br>
         <p id="colaarray">
-            Esta estructura se compone de una clase lista.
+            Esta estructura se compone de una clase ArrayQueue.
         </p>
         <pre>
                         <code class="language-python">
-                            
+                            #Se crea la clase
+                            class ArrayQueue:
+                                #Se inicializan los valores
+                                def __init__(self):
+                                    self.content = []
+                                    self.reversed = False
                         </code>
                     </pre>
         <h2>Metodos </h2><br>
         <pre>
                         <code class="language-python">
-                            
+                            #Metodo de vaciar la cola
+                            def clear(self):
+                                self.content.clear()
+
+                            #Metodo de si esta vacio
+                            def isEmpty(self) -> bool:
+                                return self.size == 0
+
+                            #metodo para eliminar
+                            def extract(self):
+                                if self.isEmpty():
+                                    raise IndexError("la cola esta vacia")
+                                else:
+                                    if self.reversed:
+                                        value = self.content[0]
+                                        self.content = self.content[1:]
+                                    else:
+                                        value = self.content.pop()
+                                return value
+
+                            #Metodo para insertar
+                            def insert(self, obj: object):
+                                if self.isEmpty():
+                                    self.content.add(obj)
+                                else:
+                                    if self.reversed:
+                                        self.content.add(obj)
+                                    else:
+                                        self.content.insert(0, obj)
+
+                            #Metodo de tamaño
+                            def size(self):
+                                return self.size
+
+                            #Metodo de buscar
+                            def search(self, obj: object) -> bool:
+                                return obj in self.content
+
+                            #Metodo para ordenar
+                            def sort(self):
+                                self.content.sort()
+
+                            #Metodo de reversa
+                            def reverse(self):
+                                if self.reversed:
+                                    self.reversed = False
+                                else:
+                                    self.reversed = True
+
+                            #Metodo para mostrar la cola
+                            def toString(self):
+                                return str(self.content)
                         </code>
                     </pre>
         </p>
