@@ -15,3 +15,19 @@ Sebastian David Gomez Acevedo
 Jean Pierre Parra Suarez  
 ED 15539**<br />
 Se hizo el esqueleto en html para la navegacion de los 3 modulos del proyecto
+
+**Bitacora 3 al 26/03/2021 al 03/04/2021<br />
+Equipo 1<br />
+Diego Alejandro Angulo Chacon  
+Sebastian David Gomez Acevedo  
+Jean Pierre Parra Suarez
+ED 15539**<br />
+Actividades
+Hacer el highlighting de los diferentes lenguajes en la pagina web, Responsable: Sebastian G. 
+Completado al:100%
+Hacer y agregar a la pagina web las estructuras de datos:los 4 tipos de lista, Pila(dinamica y arreglo) y coladinamica, Responsable: Sebastian G.
+Completado al:100%
+Hacer y agregar a la pagina web las estructuras de datos:los 4 tipos de lista, Pila dinamica, Responsable: Jean Pierre Parra.
+Completado al:100%
+Hacer el documento del modulo 1 hasta los arboles binarios, Responsable: Diego Angulo
+Completado al:0%
