@@ -1,8 +1,12 @@
 from flask import Flask,render_template, redirect, request, make_response
+from base64 import b64encode
 import ast
 import io
 import networkx
 import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_svg import FigureCanvasSVG
+
 
 app = Flask(__name__)
 
@@ -45,58 +49,72 @@ def module3():
             purePy=codePy.read()
             code_ast=ast.parse(purePy)
             imgPy=graficar(code_ast)
-            response=make_response(imgPy)
-            response.headers.set("Content-Type","image/png")
-            ##response.headers.set("Content-Type","image/png")
-            return response
+            
+            return render_template("module3_r.html",image=b64encode(imgPy).decode())
             
     return ""
 
 def graficar(code_ast):
     g=networkx.Graph()
-    for node in ast.walk(code_ast):
-        if type(node) is ast.Module:
-            g.add_node(1)
-            
+    node_number=1
+    g.add_node(node_number,Type='module',Name="Script" )
+    node_number+=1
+    for node in code_ast.body:
         if type(node) is ast.ClassDef:
-            g.add_node(2)
+            g.add_node(node_number,Type='class', Name=node.name)
+            class_id=node_number
+            node_number+=1
+            g.add_edge(1,class_id)
+            for node2 in node.body:
+                ## dentro de este for
+                if type(node2) is ast.FunctionDef:
+                    g.add_node(node_number, Type='function', Name=node2.name)
+                    function_id=node_number
+                    node_number+=1
+    
+                    g.add_edge(class_id,function_id)
+                    for node3 in node2.args.args:
+                            g.add_node(node_number, Type='argument',Name=node3.arg)
+                            g.add_edge(function_id,node_number)
+                            node_number+=1
+    
+    
+    module_nodes = [n for (n,ty) in \
+    networkx.get_node_attributes(g,'Type').items() if ty == 'module']
+    class_nodes = [n for (n,ty) in \
+    networkx.get_node_attributes(g,'Type').items() if ty == 'class']
+    function_nodes = [n for (n,ty) in \
+    networkx.get_node_attributes(g,'Type').items() if ty == 'function']
+    arg_nodes = [n for (n,ty) in \
+    networkx.get_node_attributes(g,'Type').items() if ty == 'argument']
+    
+    fig=Figure(figsize=(12,12))
+    axis=fig.add_subplot(1,1,1)
+    pos = networkx.spring_layout(g)
+    networkx.draw_networkx_nodes(g, pos, nodelist=module_nodes, \
+    node_color='red', node_shape='o',ax=axis)
+    networkx.draw_networkx_nodes(g, pos, nodelist=class_nodes, \
+    node_color='blue', node_shape='o',ax=axis)
+    networkx.draw_networkx_nodes(g, pos, nodelist=function_nodes, \
+    node_color='purple', node_shape='s',ax=axis)
+    networkx.draw_networkx_nodes(g, pos, nodelist=arg_nodes, \
+    node_color='green', node_shape='s',ax=axis)
+    networkx.draw_networkx_edges(g, pos, nodelist=arg_nodes, \
+    ax=axis)
+    labels={}
 
-        g.add_edge(1,2)
-        ## logica
-        ## Encontrar nodos y dependiendo su tipo lo grafico
-    networkx.draw(g)
+    for node in g.nodes(data=True):
+        print(node)
+        labels[node[0]]=node[1]["Name"]
+
+
+    
+    networkx.draw_networkx_labels(g,pos,labels,ax=axis)
+
     buffer=io.BytesIO()
-    plt.savefig(buffer,format="png")
+    FigureCanvasSVG(fig).print_svg(buffer)
     buffer.seek(0)
     return buffer.read()
 
 app.run(debug=True)
-## capturar el archivo y pasarlo a string, luego procesarlo con ast
-
-## tag html input file
-## request post flask
-code = """
-class Ejemplo:
-    def __init__(self):
-        pass
-print(1 + 2)
-"""
-
-## Request
-##code_ast = ast.parse(code)
-
-##or node in ast.walk(code_ast):
-##    print(node)
-"""
-    g.add_node(1)
-    g.add_node(2)
-    g.add_node(3)
-    g.add_edge(1,3)
-    g.add_edge(1,2)
-    g.add_edge(2,3)
-    for node in ast.walk(code_ast):
-        pass
-        ## logica
-        ## Encontrar nodos y dependiendo su tipo lo grafico
-"""
 
