@@ -66,45 +66,60 @@ def graficar(code_ast):
             node_number+=1
             g.add_edge(1,class_id)
             for node2 in node.body:
-                ## dentro de este for
                 if type(node2) is ast.FunctionDef:
                     g.add_node(node_number, Type='function', Name=node2.name)
                     function_id=node_number
                     node_number+=1
-    
                     g.add_edge(class_id,function_id)
                     for node3 in node2.args.args:
                             g.add_node(node_number, Type='argument',Name=node3.arg)
                             g.add_edge(function_id,node_number)
                             node_number+=1
+        
+                elif type(node2) is ast.Assign:
+                    g.add_node(node_number,Type='atributte', Name="atr")
+                    atributte_id=node_number
+                    node_number+=1
+                    g.add_edge(2,atributte_id)
+
+        elif type(node) is ast.FunctionDef:
+                    g.add_node(node_number, Type='function', Name=node.name)
+                    function_id=node_number
+                    node_number+=1
+                    g.add_edge(1,function_id) 
+        
+
     
     
     module_nodes = [n for (n,ty) in \
     networkx.get_node_attributes(g,'Type').items() if ty == 'module']
     class_nodes = [n for (n,ty) in \
     networkx.get_node_attributes(g,'Type').items() if ty == 'class']
+    atributte_nodes = [n for (n,ty) in \
+    networkx.get_node_attributes(g,'Type').items() if ty == 'atributte']
     function_nodes = [n for (n,ty) in \
     networkx.get_node_attributes(g,'Type').items() if ty == 'function']
     arg_nodes = [n for (n,ty) in \
     networkx.get_node_attributes(g,'Type').items() if ty == 'argument']
     
-    fig=Figure(figsize=(12,12))
+    fig=Figure(figsize=(14,15))
     axis=fig.add_subplot(1,1,1)
     pos = networkx.spring_layout(g)
     networkx.draw_networkx_nodes(g, pos, nodelist=module_nodes, \
     node_color='red', node_shape='o',ax=axis)
     networkx.draw_networkx_nodes(g, pos, nodelist=class_nodes, \
     node_color='blue', node_shape='o',ax=axis)
+    networkx.draw_networkx_nodes(g, pos, nodelist=atributte_nodes, \
+    node_color='yellow', node_shape='d',ax=axis)
     networkx.draw_networkx_nodes(g, pos, nodelist=function_nodes, \
     node_color='purple', node_shape='s',ax=axis)
     networkx.draw_networkx_nodes(g, pos, nodelist=arg_nodes, \
-    node_color='green', node_shape='s',ax=axis)
+    node_color='green', node_shape='^',ax=axis)
     networkx.draw_networkx_edges(g, pos, nodelist=arg_nodes, \
     ax=axis)
     labels={}
 
     for node in g.nodes(data=True):
-        print(node)
         labels[node[0]]=node[1]["Name"]
 
 
