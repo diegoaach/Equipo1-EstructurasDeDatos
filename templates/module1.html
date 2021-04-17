@@ -128,9 +128,19 @@
         <p>Las listas son un tipo de estructura lineal y dinámica de datos. 
             Estas estan compuestas por nodos los cuales tiene 2 partes, un indicador el cual guarda la direccion 
             de memoria del nodo que va proximo a este y el elemento que pertenece a la lista. <br>
-            Las listas pueden ser simplemente enlazadas, cuando solo se pueden recorrer en un solo sentido, doblemente enlazada
-            cuando se puede recorrer en ambos sentidos, y circulares cuando el ultimo objeto, llamado cola, está enlazado al primer
-            objeto de la lista, llamado cabeza.
+            Las listas pueden ser 
+            <li>
+                Simplemente enlazadas, cuando solo se pueden recorrer en un solo sentido, es decir sus nodos incluyen una referencia al 
+                nodo que les sigue, pero no al anterior
+            </li>
+            <li>
+                Doblemente enlazada, cuando sus nodos contienen referencias al nodo anterior y al proximo
+                haciendo que se pueda recorrer hacia cualquier sentido.
+            </li>
+            <li>  
+                Circulares cuando el ultimo objeto, llamado cola, tiene una referencia al primer nodo, llamado cabeza, como si fuera su siguiente
+            </li>
+        
 
         </p><br>
         <h2>Operaciones permitidas</h2><br>
@@ -152,7 +162,7 @@
         <h1>Pilas </h1><br><br>
         <h2>Concepto </h2><br>
         <p>Las pilas son una estructura de datos no fundamental, la cual requiere de, ya sea una lista enlazada o un arreglo
-            para poder realizarse o presentarse. Esta estructura se caracteriza porque principalmente con el principio de Li-Fo, el cual 
+            para poder realizarse o presentarse. Esta estructura se caracteriza con el principio de Li-Fo, el cual 
             significa Last in, First Out, representando que el ultimo elemento añadido es el primero al que se puede acceder en la pila.
         </p>
         <h2>Operaciones permitidas</h2><br>
@@ -161,14 +171,19 @@
         <li>Ordenar</li>
         <li>Buscar</li>
         <h2>Ventajas y desventajas</h2><br>
+
         
 
         <h1>Colas </h1><br><br>
-        <p></p>
-        <h2>Introduccion </h2><br>
-        <p></p>
         <h2>Concepto </h2><br>
-        <p></p>
+        <p>
+            Las colas, asi como las pilas son una estructura de datos no fundamental que requiere la utilizacion de una lista o un arreglo 
+            ser implementada. A diferencia de las pilas, las colas se rigen bajo el principio de Fi-Fo, refiriendose a First in, First out, refiriendose
+            a que el primer elemento que sea introducido, sera el primero al que se puede acceder externamente.<br>
+            Otra variante de estas son las colas con prioridad, las cuales manejan un nivel de prioridad para los elementos que son introducidos 
+            a la misma, donde los elementos que tengan la mayor prioridad, se posicionaran al inicio de la cola. Si hay elementos 
+            con el mismo nivel de prioridad, cumpliran con el Fi-Fo, ordenandose por orden de insercion. 
+        </p>
         <h2>Operaciones permitidas</h2><br>
         <p></p>
         <h2>Ventajas y desventajas</h2><br>
