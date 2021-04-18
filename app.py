@@ -31,10 +31,6 @@ def module2Java():
 def module2Python():
     return render_template("module2Python.html")
 
-@app.route("/module-2-Cpp")
-def module2Cpp():
-    return render_template("module2Cpp.html")
-
 @app.route("/module-3",methods=("GET","POST"))
 def module3():
     if(request.method=="GET"):
@@ -102,7 +98,7 @@ def graficar(code_ast):
     arg_nodes = [n for (n,ty) in \
     networkx.get_node_attributes(g,'Type').items() if ty == 'argument']
     
-    fig=Figure(figsize=(14,15))
+    fig=Figure(figsize=(14,20))
     axis=fig.add_subplot(1,1,1)
     pos = networkx.spring_layout(g)
     networkx.draw_networkx_nodes(g, pos, nodelist=module_nodes, \
