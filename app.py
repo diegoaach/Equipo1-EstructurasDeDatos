@@ -63,14 +63,21 @@ def graficar(code_ast):
             g.add_edge(1,class_id)
             for node2 in node.body:
                 if type(node2) is ast.FunctionDef:
-                    g.add_node(node_number, Type='function', Name=node2.name)
-                    function_id=node_number
-                    node_number+=1
-                    g.add_edge(class_id,function_id)
-                    for node3 in node2.args.args:
-                            g.add_node(node_number, Type='argument',Name=node3.arg)
-                            g.add_edge(function_id,node_number)
+                    if node2.name == "__init__":
+                        for node4 in node2.args.args:
+                            g.add_node(node_number,Type='atributte', Name=node4.arg)
+                            atributte_id=node_number
                             node_number+=1
+                            g.add_edge(class_id,atributte_id)
+                    else:
+                        g.add_node(node_number, Type='function', Name=node2.name)
+                        function_id=node_number
+                        node_number+=1
+                        g.add_edge(class_id,function_id)
+                        for node3 in node2.args.args:
+                                g.add_node(node_number, Type='argument',Name=node3.arg)
+                                g.add_edge(function_id,node_number)
+                                node_number+=1
         
                 elif type(node2) is ast.Assign:
                     g.add_node(node_number,Type='atributte', Name="atr")
