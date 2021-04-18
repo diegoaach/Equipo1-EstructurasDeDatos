@@ -1,1190 +1,1086 @@
-<html>
-
-<head>
-    <link rel="stylesheet" href="static/prism.css">
-    <title>Home</title>
-    <style type="text/css">
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        #header {
-            margin: auto;
-            width: 500px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        #LVaED {
-            
-            font-family: sans-serif;
-            font-size: 25px;
-            background-color: black;
-            padding-top: 10px;
-            padding-bottom: 20px;
-        }
-
-        #docBlock {
-            margin-top: 100px;
-            margin-left: 250px;
-            margin-right: 250px;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #fff;
-            border: 2px solid #000000;
-            border-radius: 25px;
-            padding-left: 10px;
-        }
-
-        ul,
-        ol {
-            list-style: none;
-        }
-
-        .nav {
-            width: 500px;
-
-            margin: 0 auto;
-
-            margin-right: 150px;
-            margin-left: 75px;
-        }
-
-        .nav>li {
-            float: left;
-        }
-
-        .nav li a {
-            background-color: #000;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 12px;
-            display: block;
-        }
-
-        .nav li a:hover {
-            background-color: #434343;
-        }
-
-        .nav li ul {
-            display: none;
-            position: absolute;
-            min-width: 140px;
-        }
-
-        .nav li:hover>ul {
-            display: block;
-        }
-
-        .nav li ul li {
-            position: relative;
-        }
-
-        .nav li ul li ul {
-            right: -140px;
-            top: 0px;
-        }
-
-        body {
-            background-image: url("static/oriental-tiles.png");
-     
-     }
-    </style>
-    <div id="LVaED">
-        <h1 style="text-align:center;color: white;" color: white;>LVaED </h1>
-        </div>
-</head>
-
+<!DOCTYPE html>
+<html lang="en">
+<title>modulo2Python</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="static/prism.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
 <body>
 
-    <div id="header">
-        <nav>
-
-            <ul class="nav">
-                <li><a href="index">Inicio</a></li>
-                <li><a href="module-1">Modulo 1</a></li>
-
-                
-            </li>
-            <li><a href="">Modulo 2</a>
-                <ul>
-                    <li><a href="module-2-Java">Java</a></li>
-                    <li><a href="module-2-Python">Pyhon</a></li>
-                    <li><a href="module-2-Cpp">C++</a></li>
-                </ul>
-            </li>
-            <li><a href="module-3">Modulo 3</a></li>
-            
-            </ul>
-
-        </nav>
-
-    </div>
-    <div id="docBlock">
-        <br>
-
-        <h1>Paradigma </h1><br><br>
-
-        <h1>Ventajas y desventajas </h1><br><br>
-
-        <h1 id="estructuras"> Estructuras : </h1><br>
-        <h2><a href="#listaenlazada">Lista enlazada</a></h2>
-        <h2><a href="#listadoble">Lista doblemente enlazada</a></h2>
-        <h2><a href="#listacircular">Lista circular enlazada</a></h2>
-        <h2><a href="#listacirculardoble">Lista circular doblemente enlazada</a></h2>
-        <h2><a href="#piladinamica">Pila dinamica</a></h2>
-        <h2><a href="#pilaarray">Pila basada en arreglos</a></h2>
-        <h2><a href="#coladinamica">Cola dinamica</a></h2>
-        <h2><a href="#colaarray">Cola basada en arreglos</a></h2>
-        <h2><a href="#arbolbinario">Arbol Binario</a></h2>
-        <h2><a href="#arbolninario">Arbol n-nario</a></h2>
-        <h2><a href="#tablahash">Tablas de Hash</a></h2>
-        <h2><a href="#grafo">Grafos</a></h2>
-        <br>
-
-        <h1>Lista enlazada</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="listaenlazada">
-            Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            #Se crea la clase del nodo
-                            class Node(object):
-                                #Se inicializan los valores
-                                def __init__(self, object=None, next=None, before=None):
-                                    self.object = object
-                                    self.next = next
-                                    self.before = before
-
-                                #Muestra el valor del objeto
-                                def getObject(self):
-                                    return self.object
-
-                                #Muestra el valor del siguiente objeto
-                                def getNext(self):
-                                    return self.next
-
-                                #Muestra el valor del siguiente objeto
-                                def setNext(self, next):
-                                    self.next = next
-
-                                #Muestra el valor del anterior objeto
-                                def getBefore(self):
-                                    return self.before
-
-                                #Modifica el valor del anterior objeto
-                                def setBefore(self, before):
-                                    self.before = before
-
-
-                            #Se crea la clase de la lista
-                            class List(object):
-                                def __init__(self, head=None):
-                                    self.head = head
-                                    self.tail = head
-                                    self.size = 0
-
-                                def __iter__(self):
-                                    inode = self.head
-                                    for i in range(self.size):
-                                        yield inode.object
-                                        inode = inode.next
-
-                                #Retorna un true si la lista esta vacia y no si tiene objectos
-                                def isEmpty(self):
-                                    return self.head is None
-
-                                #Retorna la cantidad de objetos
-                                def getSize(self):
-                                    inode = self.head
-                                    acum = 0
-                                    while inode:
-                                        acum += 1
-                                        inode = inode.getNext()
-                                    return acum
-
-                                #Se borran todos los elementos de la lista
-                                def clear(self):
-                                    self.head = None
-                                    self.tail = None
-                                    self.size = 0
-
-                                #Se obtiene el primer valor de la lista
-                                def getHead(self):
-                                    if self.isEmpty():
-                                        raise IndexError("la lista esta vacia")
-                                    return self.head.object
-
-                                #Se obtiene el ultimo valor de la lista
-                                def getTail(self):
-                                    if self.isEmpty():
-                                        raise IndexError("la lista esta vacia")
-                                    return self.tail.object
-
-                                #Se busca un objeto en la lista
-                                def search(self, object):
-                                    if self.isEmpty():
-                                        raise IndexError("la lista esta vacia")
-                                    inode = self.head
-                                    for i in range(self.size):
-                                        if inode.object == object:
-                                            return i
-                                        inode = inode.next
-                                    return -1
-
-                                #Se añade un objeto a la lista
-                                def add(self, object):
-                                    if self.size == 0:
-                                        self.head = Node(object)
-                                        self.tail = self.head
-                                    else:
-                                        previous = self.tail
-                                        following = Node(object, before=previous)
-                                        previous.next = following
-                                        self.tail = following
-                                    self.size += 1
-
-                                #Se añade un valor a la lista
-                                def insert(self, index, object):
-                                    if self.isEmpty():
-                                        raise IndexError("la lista esta vacia")
-                                    if self.size == 1:
-                                        previous = self.head
-                                        following = Node(object)
-                                        following.next = previous
-                                        self.head = following
-                                        self.tail = previous
-                                        self.tail.before = self.head
-                                    elif index == 0:
-                                        previous = self.head
-                                        following = Node(object, previous)
-                                        previous.before = following
-                                        self.head = following
-                                    elif index == self.size - 1:
-                                        inode = Node(object, self.tail, self.tail.before)
-                                        self.tail.before.next = inode
-                                        self.tail.before = inode
-                                    else:
-                                        inode = self.head
-                                        for i in range(self.size):
-                                            if index == i:
-                                                inode = Node(object, inode, inode.before)
-                                                inode.before.next = inode
-                                                inode.before = inode
-                                            inode = inode.next
-                                    self.size += 1
-
-                                #Se inserta un objeto a la primera posicion
-                                def insertHead(self, object):
-                                    self.insert(0, object)
-
-                                #Se inserta un objeto a la ultima posicion
-                                def insertTail(self, object):
-                                    self.insert(self.size - 1, object)
-
-                                #Se elimina un valor de la lista
-                                def remove(self, index):
-                                    if self.isEmpty():
-                                        raise IndexError("la lista esta vacia")
-                                    if self.size == 1:
-                                        self.clear()
-                                        return
-                                    elif index == 0:
-                                        self.head.next.before = None
-                                        self.head = self.head.next
-                                    elif index == self.size - 1:
-                                        self.tail.before.next = None
-                                        self.tail = self.tail.before
-                                    else:
-                                        inode = self.head
-                                        for i in range(self.size):
-                                            if index == i:
-                                                inode.next.before = inode.before
-                                                inode.before.next = inode.next
-                                            inode = inode.next
-                                    self.size -= 1
-
-                                #Metodo si contiene un objeto
-                                def contains(self, object):
-                                    return self.search(object) != -1
-
-                                #Se crea una lista definiendo el inicio y el fin
-                                def subList(self, From, To):
-                                    if self.isEmpty():
-                                        raise IndexError("la lista esta vacia")
-                                    if To > self.size:
-                                        To = self.size
-                                    subList = List()
-                                    var = False
-                                    inode = self.head
-                                    for i in range(self.size):
-                                        if i == From:
-                                            subList.add(inode.object)
-                                            var = True
-                                            if From == To:
-                                                break
-                                        elif var and i < To:
-                                            subList.add(inode.object)
-                                        inode = inode.next
-                                    return subList
-
-                                #Transforma la lista a un array
-                                def toArray(self):
-                                    if self.isEmpty():
-                                        raise IndexError("la lista esta vacia")
-                                    else:
-                                        array = [self.size]
-                                        inode = self.head
-                                        for i in range(self.size):
-                                            array[i] = inode.object
-                                            inode = inode.next
-                                        return array
-
-                                #Se muestran todos los valores de la lista
-                                def toString(self):
-                                    return list(i for i in self)
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Lista doblemente enlazada</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="listadoble"> 
-            Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            #Se crea la clase del nodo
-                            class ListNode(object):
-                                #Se inicializan los valores
-                                def __init__(self, object: object):
-                                    self.object = object
-                                    self.next: ListNode
-                                    self.next = None
-                                    self.before: ListNode
-                                    self.before = None
-
-                                #Se actualizan los valores
-                                def update(self, object: object):
-                                    self.object = object
-
-                            
-                            #Se crea la clase de la lista
-                            class DoubleList(object):
-                                def __init__(self):
-                                    self.head: ListNode.ListNode
-                                    self.head = None
-                                    self.tail: ListNode.ListNode
-                                    self.tail = None
-                                    self.size = 0
-                            
-                                def __iter__(self):
-                                    inode = self.head
-                                    for i in range(self.size):
-                                        yield inode
-                                        inode = inode.next
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            #Retorna un true si la lista esta vacia y no si tiene objectos
-                            def isEmpty(self):
-                                return self.head is None
-
-                            #Retorna la cantidad de objetos
-                            def getSize(self):
-                                return self.size
-
-                            #Se borran todos los elementos de la lista
-                            def clear(self):
-                                self.size = 0
-                                self.head = None
-                                self.tail = None
-
-                            #Se obtiene el primer valor de la lista
-                            def getHead(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                return self.head.object
-
-                            #Se obtiene el ultimo valor de la lista
-                            def getTail(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                return self.tail.object
-
-                            #Se busca un objeto en la lista
-                            def search(self, object):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                inode = self.head
-                                for i in range(self.size):
-                                    if inode.object == object:
-                                        return i
-                                    inode = inode.next
-                                return -1
-
-                            #Se añade un objeto a la lista
-                            def add(self, object: object):
-                                new_tail = ListNode.ListNode(object)
-                                if self.size == 0:
-                                    self.head = new_tail
-                                    self.tail = new_tail
-                                else:
-                                    old_tail = self.tail
-                                    old_tail.next = new_tail
-                                    new_tail.before = old_tail
-                                    self.tail = new_tail
-                                self.tail = new_tail
-                                self.size += 1
-
-                            #Se añade un valor a la lista
-                            def insert(self, index: int, object: object):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                inode = ListNode.ListNode(object)
-                                if index == 0:
-                                    self.head.before = inode
-                                    inode.next = self.head
-                                    self.head = inode
-                                elif index == self.size - 1:
-                                    self.tail.before.next = inode
-                                    inode.before = self.tail.before
-                                    self.tail.before = inode
-                                    inode.next = self.tail
-                                else:
-                                    for i, node in enumerate(self):
-                                        if i == index:
-                                            inode.next = node
-                                            inode.before = node.before
-                                            node.before.next = inode
-                                            node.before = inode
-                                            break
-                                self.size += 1
-
-                            #Se inserta un objeto a la primera posicion
-                            def insertHead(self, object):
-                                self.insert(0, object)
-
-                            #Se inserta un objeto a la ultima posicion
-                            def insertTail(self, object):
-                                self.insert(self.size - 1, object)
-
-                            #Se elimina un nodo de la lista
-                            def remove_node(self, node: ListNode.ListNode):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                inode = self.head
-                                found = False
-                                if self.size == 1 and self.head == node:
-                                    self.head = None
-                                    self.tail = None
-                                    found = True
-                                else:
-                                    for i in range(self.size):
-                                        if inode == node:
-                                            if i == 0:
-                                                self.head = self.head.next
-                                                self.head.before = None
-                                            elif i == self.size - 1:
-                                                self.tail = self.tail.before
-                                                self.tail.next = None
-                                            else:
-                                                inode.next.before = inode.before
-                                                inode.before.next = inode.next
-                                            found = True
-                                            break
-                                        inode = inode.next
-                                if not found:
-                                    raise ValueError("Node not in the list")
-                                self.size -= 1
-
-                            #Se elimina un objeto de la lista
-                            def remove(self, object: object):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                inode = self.head
-                                found = False
-                                if self.size == 1 and self.head.object == object:
-                                    self.head = None
-                                    self.tail = None
-                                    found = True
-                                else:
-                                    for i in range(self.size):
-                                        if inode.object == object:
-                                            if i == 0:
-                                                self.head = self.head.next
-                                                self.head.before = None
-                                            elif i == self.size - 1:
-                                                self.tail = self.tail.before
-                                                self.tail.next = None
-                                            else:
-                                                inode.next.before = inode.before
-                                                inode.before.next = inode.next
-                                            found = True
-                                            break
-                                        inode = inode.next
-                                if not found:
-                                    raise ValueError("No esta en la lista")
-                                self.size -= 1
-
-                            #Metodo si contiene un objeto
-                            def contains(self, item):
-                                try:
-                                    self.index(item)
-                                    return True
-                                except ValueError:
-                                    return False
-
-                            #Se crea una lista definiendo el inicio y el fin
-                            def subList(self, From, To):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                if To > self.size:
-                                    To = self.size
-                                subList = DoubleList()
-                                var = False
-                                inode = self.head
-                                for i in range(self.size):
-                                    if i == From:
-                                        subList.add(inode.object)
-                                        var = True
-                                        if From == To:
-                                            break
-                                    elif var and i < To:
-                                        subList.add(inode.object)
-                                    inode = inode.next
-                                return subList
-
-                            #Transforma la lista a un array
-                            def toArray(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                else:
-                                    array = [self.size]
-                                    inode = self.head
-                                    for i in range(self.size):
-                                        array[i] = inode.object
-                                        inode = inode.next
-                                    return array
-
-                            #Metodo de posicion de los objetos
-                            def index(self, object: object) -> int:
-                                for index, list_object in enumerate(self):
-                                    if list_object == object:
-                                        return index
-                                raise ValueError("No esta en la lista")
-
-                            #Se muestran todos los objetos de la lista
-                            def toString(self):
-                                return [node.object for node in self]
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Lista enlazada circular</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="listacircular">
-            Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            #Se crea la clase del nodo
-                            class ListNode(object):
-                                #Se inicializan los valores
-                                def __init__(self, object: object):
-                                    self.object = object
-                                    self.next: ListNode
-                                    self.next = None
-                                    self.before: ListNode
-                                    self.before = None
-
-                                #Se actualizan los valores
-                                def update(self, object: object):
-                                    self.object = object
-                                
-
-                            #Se crea la clase lista
-                            class CircularList(object):
-                                #Se inicializan los valores
-                                def __init__(self):
-                                    self.size = 0
-                                    self.content = DoubleList.DoubleList()
-
-                                #Metodo de iterador
-                                def __iter__(self):
-                                    yield from self.content
-                            
-                                #Se actualizan los valores
-                                def update(self):
-                                    if self.content.head is not None:
-                                        self.content.head.before = self.content.tail
-                                    self.size = self.content.size
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            #Retorna un true si la lista esta vacia y no si tiene objectos
-                            def isEmpty(self):
-                                return self.head is None
-
-                            #Retorna la cantidad de objetos
-                            def getSize(self):
-                                inode = self.head
-                                acum = 0
-                                while inode:
-                                    acum += 1
-                                    inode = inode.getNext()
-                                return acum
-
-                            #Se borran todos los elementos de la lista
-                            def clear(self):
-                                self.content.clear()
-                                self.update()
-
-                            #Se obtiene el primer valor de la lista
-                            def getHead(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                return self.head.object
-
-                            #Se obtiene el ultimo valor de la lista
-                            def getTail(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                return self.tail.object
-
-                            #Se busca un objeto en la lista
-                            def search(self, object):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                inode = self.head
-                                for i in range(self.size):
-                                    if inode.object == object:
-                                        return i
-                                    inode = inode.next
-                                return -1
-
-                            #Se añade un objeto a la lista
-                            def add(self, obj: object):
-                                self.content.add(obj)
-                                self.update()
-
-                            #Se inserta un objeto a la lista
-                            def insert(self, index: int, obj: object):
-                                self.content.insert(index, obj)
-                                self.update()
-
-                            #Se inserta un objeto a la primera posicion
-                            def insertHead(self, object):
-                                self.insert(0, object)
-
-                            #Se inserta un objeto a la ultima posicion
-                            def insertTail(self, object):
-                                self.insert(self.size - 1, object)
-
-                            #Se elimina un objeto de la lista
-                            def remove(self, obj: object):
-                                self.content.remove(obj)
-                                self.update()
-
-                            #Se elimina un nodo de la  lista
-                            def remove_node(self, node: ListNode.ListNode):
-                                self.content.remove_node(node)
-
-                            #Metodo si contiene un objeto
-                            def contains(self, object):
-                                return self.search(object) != -1
-
-                            #Se crea una lista definiendo el inicio y el fin
-                            def subList(self, From, To):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                if To > self.size:
-                                    To = self.size
-                                subList = CircularList()
-                                var = False
-                                inode = self.head
-                                for i in range(self.size):
-                                    if i == From:
-                                        subList.add(inode.object)
-                                        var = True
-                                        if From == To:
-                                            break
-                                    elif var and i < To:
-                                        subList.add(inode.object)
-                                    inode = inode.next
-                                return subList
-
-                            #Transforma la lista a un array
-                            def toArray(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                else:
-                                    array = [self.size]
-                                    inode = self.head
-                                    for i in range(self.size):
-                                        array[i] = inode.object
-                                        inode = inode.next
-                                    return array
-
-                            #Metodo de posicion de los objetos
-                            def index(self, obj: object) -> int:
-                                return self.content.index(obj)
-
-                            #Se muestran todos los objetos de la lista
-                            def toString(self):
-                                return [node.object for node in self]
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Lista doblemente enlazada circular</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="listacirculardoble">
-            Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            #Se crea la clase del nodo
-                            class ListNode(object):
-                                #Se inicializan los valores
-                                def __init__(self, object: object):
-                                    self.object = object
-                                    self.next: ListNode
-                                    self.next = None
-                                    self.before: ListNode
-                                    self.before = None
-
-                                #Se actualizan los valores
-                                def update(self, object: object):
-                                    self.object = object
-
-
-                            #Se crea la lista
-                            class DoubleCircularList(object):
-                                #Se inicializan los valores
-                                def __init__(self):
-                                    self.size = 0
-                                    self.content = DoubleList.DoubleList()
-                            
-                                #Metodo iterador
-                                def __iter__(self):
-                                    yield from self.content
-                            
-                                #Se actualizan los valores
-                                def update(self):
-                                    if self.content.head is not None:
-                                        self.content.head.before = self.content.tail
-                                    if self.content.tail is not None:
-                                        self.content.tail.next = self.content.head
-                                    self.size = self.content.size
-                                
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            #Retorna un true si la lista esta vacia y no si tiene objectos
-                            def isEmpty(self):
-                                return self.head is None
-
-                            #Retorna la cantidad de objetos
-                            def getSize(self):
-                                return self.size
-
-                            def clear(self):
-                                self.content.clear()
-                                self.update()
-
-                            #Se obtiene el primer valor de la lista
-                            def getHead(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                return self.head.object
-
-                            #Se obtiene el ultimo valor de la lista
-                            def getTail(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                return self.tail.object
-
-                            #Se busca un objeto en la lista
-                            def search(self, object):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                inode = self.head
-                                for i in range(self.size):
-                                    if inode.object == object:
-                                        return i
-                                    inode = inode.next
-                                return -1
-
-                            #Se añade un objeto a la lista
-                            def add(self, obj: object):
-                                self.content.add(obj)
-                                self.update()
-
-                            #Se inserta un objeto a la lista
-                            def insert(self, index: int, obj: object):
-                                self.content.insert(index, obj)
-                                self.update()
-
-                            #Se inserta un objeto a la primera posicion
-                            def insertHead(self, object):
-                                self.insert(0, object)
-
-                            #Se inserta un objeto a la ultima posicion
-                            def insertTail(self, object):
-                                self.insert(self.size - 1, object)
-
-                            #Se elimina un objeto de la lista
-                            def remove(self, obj: object):
-                                self.content.remove(obj)
-                                self.update()
-
-                            #Se elimina un nodo de la lista
-                            def remove_node(self, node: ListNode.ListNode):
-                                self.content.remove_node(node)
-
-                            #Metodo si contiene un objeto
-                            def contains(self, item):
-                                try:
-                                    self.index(item)
-                                    return True
-                                except ValueError:
-                                    return False
-
-                            #Se crea una lista definiendo el inicio y el fin
-                            def subList(self, From, To):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                if To > self.size:
-                                    To = self.size
-                                subList = DoubleList()
-                                var = False
-                                inode = self.head
-                                for i in range(self.size):
-                                    if i == From:
-                                        subList.add(inode.object)
-                                        var = True
-                                        if From == To:
-                                            break
-                                    elif var and i < To:
-                                        subList.add(inode.object)
-                                    inode = inode.next
-                                return subList
-
-                            #Transforma la lista a un array
-                            def toArray(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                else:
-                                    array = [self.size]
-                                    inode = self.head
-                                    for i in range(self.size):
-                                        array[i] = inode.object
-                                        inode = inode.next
-                                    return array
-
-                            #Metodo de posicion de los objetos
-                            def index(self, obj: object) -> int:
-                                return self.content.index(obj)
-
-                            #Se muestran todos los objetos de la lista
-                            def toString(self):
-                                return [node.object for node in self]
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Pila dinamica</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="piladinamica">
-            // Ingresar aqui una breve descripcion de la clase. 
-            EJ:Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Pila basada en arreglos</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="pilaarray">
-            Esta estructura se compone de una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            #Se crea la clase
-                            class ArrayStack(object):
-                                #Se inicializan los valores
-                                def __init__(self, size: int):
-                                    self.max = size
-                                    self.size = 0
-                                    self.content = [None] * size
-                                    self.reversed = False
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            #Metodo de vaciar lista
-                            def clear(self):
-                                self.content.clear()
-
-                            #Metodo de si esta vacio
-                            def isEmpty(self) -> bool:
-                                return self.size == 0
-
-                            #metodo para mirar
-                            def peek(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                if self.reversed:
-                                    return self.content[self.size - 1]
-                                return self.content[0]
-
-                            #metodo para quitar
-                            def pop(self):
-                                if self.isEmpty():
-                                    raise IndexError("la lista esta vacia")
-                                if self.reversed:
-                                    value = self.content[self.size - 1]
-                                    self.content[self.size - 1] = None
-                                    self.size -= 1
-                                    return value
-                                value = self.content[0]
-                                self.content = [*self.content[1:], None]
-                                self.size -= 1
-                                return value
-
-                            #Metodo para apilar
-                            def push(self, obj: object):
-                                if self.size == self.max:
-                                    raise IndexError("Alcanzó el tamaño máximo de pila")
-                                if self.reversed:
-                                    self.content[self.size] = obj
-                                else:
-                                    self.content = [obj, *self.content[:-1]]
-                                self.size += 1
-
-                            #Metodo de tamaño
-                            def size(self):
-                                return self.size
-
-                            #Metodo de buscar
-                            def search(self, obj: object) -> bool:
-                                return obj in self.content
-
-                                #Metodo de reversa
-                            def reverse(self):
-                                self.reversed = not self.reversed
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Cola dinamica</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="coladinamica">
-            Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Cola basada en arreglos</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="colaarray">
-            Esta estructura se compone de una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            #Se crea la clase
-                            class ArrayQueue:
-                                #Se inicializan los valores
-                                def __init__(self):
-                                    self.content = []
-                                    self.reversed = False
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            #Metodo de vaciar la cola
-                            def clear(self):
-                                self.content.clear()
-
-                            #Metodo de si esta vacio
-                            def isEmpty(self) -> bool:
-                                return self.size == 0
-
-                            #metodo para eliminar
-                            def extract(self):
-                                if self.isEmpty():
-                                    raise IndexError("la cola esta vacia")
-                                else:
-                                    if self.reversed:
-                                        value = self.content[0]
-                                        self.content = self.content[1:]
-                                    else:
-                                        value = self.content.pop()
-                                return value
-
-                            #Metodo para insertar
-                            def insert(self, obj: object):
-                                if self.isEmpty():
-                                    self.content.add(obj)
-                                else:
-                                    if self.reversed:
-                                        self.content.add(obj)
-                                    else:
-                                        self.content.insert(0, obj)
-
-                            #Metodo de tamaño
-                            def size(self):
-                                return self.size
-
-                            #Metodo de buscar
-                            def search(self, obj: object) -> bool:
-                                return obj in self.content
-
-                            #Metodo para ordenar
-                            def sort(self):
-                                self.content.sort()
-
-                            #Metodo de reversa
-                            def reverse(self):
-                                if self.reversed:
-                                    self.reversed = False
-                                else:
-                                    self.reversed = True
-
-                            #Metodo para mostrar la cola
-                            def toString(self):
-                                return str(self.content)
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Arbol binario</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="arbolbinario">
-            EJ:Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Arbol n-nario</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="arbolninario">
-            EJ:Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Tablas de hash</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="tablahash">
-            // Ingresar aqui una breve descripcion de la clase. 
-            EJ:Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-
-        <h1>Grafo</h1><br><br>
-        <p>
-        <h2>Estructura </h2><br>
-        <p id="grafo">
-            // Ingresar aqui una breve descripcion de la clase. 
-            EJ:Esta estructura se compone de una clase nodo y una clase lista.
-        </p>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-                        <code class="language-python">
-                            
-                        </code>
-                    </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-    </div>
-    <script src="static/prism.js"></script> 
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="module-1" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Modulo1</a>
+    <a href="module-2-Java" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Modulo 2.Java</a>
+    <a href="module-2-Python" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Modulo 2.Python</a>
+    <a href="module-3" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Modulo 3</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="module-1" class="w3-bar-item w3-button w3-padding-large">Modulo1</a>
+    <a href="module2-Java" class="w3-bar-item w3-button w3-padding-large">Modulo 2.Java</a>
+    <a href="module2-Python" class="w3-bar-item w3-button w3-padding-large">Modulo 2.Python</a>
+    <a href="module-3" class="w3-bar-item w3-button w3-padding-large">Modulo 3</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container w3-dark-gray w3-center" style="padding:64px 16px">
+  <h1 class="w3-margin w3-jumbo">Modulo de ejemplos: Python</h1>
+
+  
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    
+      
+      <h1>Paradigma </h1><br>
+
+      <h1>Ventajas y desventajas </h1><br><br>
+
+      <h1 id="estructuras"> Estructuras : </h1><br>
+      <h2><a href="#listaenlazada">Lista enlazada</a></h2>
+      <h2><a href="#listadoble">Lista doblemente enlazada</a></h2>
+      <h2><a href="#listacircular">Lista circular enlazada</a></h2>
+      <h2><a href="#listacirculardoble">Lista circular doblemente enlazada</a></h2>
+      <h2><a href="#piladinamica">Pila dinamica</a></h2>
+      <h2><a href="#pilaarray">Pila basada en arreglos</a></h2>
+      <h2><a href="#coladinamica">Cola dinamica</a></h2>
+      <h2><a href="#colaarray">Cola basada en arreglos</a></h2>
+      <h2><a href="#arbolbinario">Arbol Binario</a></h2>
+      <h2><a href="#arbolninario">Arbol n-nario</a></h2>
+      <h2><a href="#tablahash">Tablas de Hash</a></h2>
+      <h2><a href="#grafo">Grafos</a></h2>
+      <br>
+
+      <h1>Lista enlazada</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="listaenlazada">
+          Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          #Se crea la clase del nodo
+                          class Node(object):
+                              #Se inicializan los valores
+                              def __init__(self, object=None, next=None, before=None):
+                                  self.object = object
+                                  self.next = next
+                                  self.before = before
+
+                              #Muestra el valor del objeto
+                              def getObject(self):
+                                  return self.object
+
+                              #Muestra el valor del siguiente objeto
+                              def getNext(self):
+                                  return self.next
+
+                              #Muestra el valor del siguiente objeto
+                              def setNext(self, next):
+                                  self.next = next
+
+                              #Muestra el valor del anterior objeto
+                              def getBefore(self):
+                                  return self.before
+
+                              #Modifica el valor del anterior objeto
+                              def setBefore(self, before):
+                                  self.before = before
+
+
+                          #Se crea la clase de la lista
+                          class List(object):
+                              def __init__(self, head=None):
+                                  self.head = head
+                                  self.tail = head
+                                  self.size = 0
+
+                              def __iter__(self):
+                                  inode = self.head
+                                  for i in range(self.size):
+                                      yield inode.object
+                                      inode = inode.next
+
+                              #Retorna un true si la lista esta vacia y no si tiene objectos
+                              def isEmpty(self):
+                                  return self.head is None
+
+                              #Retorna la cantidad de objetos
+                              def getSize(self):
+                                  inode = self.head
+                                  acum = 0
+                                  while inode:
+                                      acum += 1
+                                      inode = inode.getNext()
+                                  return acum
+
+                              #Se borran todos los elementos de la lista
+                              def clear(self):
+                                  self.head = None
+                                  self.tail = None
+                                  self.size = 0
+
+                              #Se obtiene el primer valor de la lista
+                              def getHead(self):
+                                  if self.isEmpty():
+                                      raise IndexError("la lista esta vacia")
+                                  return self.head.object
+
+                              #Se obtiene el ultimo valor de la lista
+                              def getTail(self):
+                                  if self.isEmpty():
+                                      raise IndexError("la lista esta vacia")
+                                  return self.tail.object
+
+                              #Se busca un objeto en la lista
+                              def search(self, object):
+                                  if self.isEmpty():
+                                      raise IndexError("la lista esta vacia")
+                                  inode = self.head
+                                  for i in range(self.size):
+                                      if inode.object == object:
+                                          return i
+                                      inode = inode.next
+                                  return -1
+
+                              #Se añade un objeto a la lista
+                              def add(self, object):
+                                  if self.size == 0:
+                                      self.head = Node(object)
+                                      self.tail = self.head
+                                  else:
+                                      previous = self.tail
+                                      following = Node(object, before=previous)
+                                      previous.next = following
+                                      self.tail = following
+                                  self.size += 1
+
+                              #Se añade un valor a la lista
+                              def insert(self, index, object):
+                                  if self.isEmpty():
+                                      raise IndexError("la lista esta vacia")
+                                  if self.size == 1:
+                                      previous = self.head
+                                      following = Node(object)
+                                      following.next = previous
+                                      self.head = following
+                                      self.tail = previous
+                                      self.tail.before = self.head
+                                  elif index == 0:
+                                      previous = self.head
+                                      following = Node(object, previous)
+                                      previous.before = following
+                                      self.head = following
+                                  elif index == self.size - 1:
+                                      inode = Node(object, self.tail, self.tail.before)
+                                      self.tail.before.next = inode
+                                      self.tail.before = inode
+                                  else:
+                                      inode = self.head
+                                      for i in range(self.size):
+                                          if index == i:
+                                              inode = Node(object, inode, inode.before)
+                                              inode.before.next = inode
+                                              inode.before = inode
+                                          inode = inode.next
+                                  self.size += 1
+
+                              #Se inserta un objeto a la primera posicion
+                              def insertHead(self, object):
+                                  self.insert(0, object)
+
+                              #Se inserta un objeto a la ultima posicion
+                              def insertTail(self, object):
+                                  self.insert(self.size - 1, object)
+
+                              #Se elimina un valor de la lista
+                              def remove(self, index):
+                                  if self.isEmpty():
+                                      raise IndexError("la lista esta vacia")
+                                  if self.size == 1:
+                                      self.clear()
+                                      return
+                                  elif index == 0:
+                                      self.head.next.before = None
+                                      self.head = self.head.next
+                                  elif index == self.size - 1:
+                                      self.tail.before.next = None
+                                      self.tail = self.tail.before
+                                  else:
+                                      inode = self.head
+                                      for i in range(self.size):
+                                          if index == i:
+                                              inode.next.before = inode.before
+                                              inode.before.next = inode.next
+                                          inode = inode.next
+                                  self.size -= 1
+
+                              #Metodo si contiene un objeto
+                              def contains(self, object):
+                                  return self.search(object) != -1
+
+                              #Se crea una lista definiendo el inicio y el fin
+                              def subList(self, From, To):
+                                  if self.isEmpty():
+                                      raise IndexError("la lista esta vacia")
+                                  if To > self.size:
+                                      To = self.size
+                                  subList = List()
+                                  var = False
+                                  inode = self.head
+                                  for i in range(self.size):
+                                      if i == From:
+                                          subList.add(inode.object)
+                                          var = True
+                                          if From == To:
+                                              break
+                                      elif var and i < To:
+                                          subList.add(inode.object)
+                                      inode = inode.next
+                                  return subList
+
+                              #Transforma la lista a un array
+                              def toArray(self):
+                                  if self.isEmpty():
+                                      raise IndexError("la lista esta vacia")
+                                  else:
+                                      array = [self.size]
+                                      inode = self.head
+                                      for i in range(self.size):
+                                          array[i] = inode.object
+                                          inode = inode.next
+                                      return array
+
+                              #Se muestran todos los valores de la lista
+                              def toString(self):
+                                  return list(i for i in self)
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Lista doblemente enlazada</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="listadoble"> 
+          Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          #Se crea la clase del nodo
+                          class ListNode(object):
+                              #Se inicializan los valores
+                              def __init__(self, object: object):
+                                  self.object = object
+                                  self.next: ListNode
+                                  self.next = None
+                                  self.before: ListNode
+                                  self.before = None
+
+                              #Se actualizan los valores
+                              def update(self, object: object):
+                                  self.object = object
+
+                          
+                          #Se crea la clase de la lista
+                          class DoubleList(object):
+                              def __init__(self):
+                                  self.head: ListNode.ListNode
+                                  self.head = None
+                                  self.tail: ListNode.ListNode
+                                  self.tail = None
+                                  self.size = 0
+                          
+                              def __iter__(self):
+                                  inode = self.head
+                                  for i in range(self.size):
+                                      yield inode
+                                      inode = inode.next
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          #Retorna un true si la lista esta vacia y no si tiene objectos
+                          def isEmpty(self):
+                              return self.head is None
+
+                          #Retorna la cantidad de objetos
+                          def getSize(self):
+                              return self.size
+
+                          #Se borran todos los elementos de la lista
+                          def clear(self):
+                              self.size = 0
+                              self.head = None
+                              self.tail = None
+
+                          #Se obtiene el primer valor de la lista
+                          def getHead(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              return self.head.object
+
+                          #Se obtiene el ultimo valor de la lista
+                          def getTail(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              return self.tail.object
+
+                          #Se busca un objeto en la lista
+                          def search(self, object):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              inode = self.head
+                              for i in range(self.size):
+                                  if inode.object == object:
+                                      return i
+                                  inode = inode.next
+                              return -1
+
+                          #Se añade un objeto a la lista
+                          def add(self, object: object):
+                              new_tail = ListNode.ListNode(object)
+                              if self.size == 0:
+                                  self.head = new_tail
+                                  self.tail = new_tail
+                              else:
+                                  old_tail = self.tail
+                                  old_tail.next = new_tail
+                                  new_tail.before = old_tail
+                                  self.tail = new_tail
+                              self.tail = new_tail
+                              self.size += 1
+
+                          #Se añade un valor a la lista
+                          def insert(self, index: int, object: object):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              inode = ListNode.ListNode(object)
+                              if index == 0:
+                                  self.head.before = inode
+                                  inode.next = self.head
+                                  self.head = inode
+                              elif index == self.size - 1:
+                                  self.tail.before.next = inode
+                                  inode.before = self.tail.before
+                                  self.tail.before = inode
+                                  inode.next = self.tail
+                              else:
+                                  for i, node in enumerate(self):
+                                      if i == index:
+                                          inode.next = node
+                                          inode.before = node.before
+                                          node.before.next = inode
+                                          node.before = inode
+                                          break
+                              self.size += 1
+
+                          #Se inserta un objeto a la primera posicion
+                          def insertHead(self, object):
+                              self.insert(0, object)
+
+                          #Se inserta un objeto a la ultima posicion
+                          def insertTail(self, object):
+                              self.insert(self.size - 1, object)
+
+                          #Se elimina un nodo de la lista
+                          def remove_node(self, node: ListNode.ListNode):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              inode = self.head
+                              found = False
+                              if self.size == 1 and self.head == node:
+                                  self.head = None
+                                  self.tail = None
+                                  found = True
+                              else:
+                                  for i in range(self.size):
+                                      if inode == node:
+                                          if i == 0:
+                                              self.head = self.head.next
+                                              self.head.before = None
+                                          elif i == self.size - 1:
+                                              self.tail = self.tail.before
+                                              self.tail.next = None
+                                          else:
+                                              inode.next.before = inode.before
+                                              inode.before.next = inode.next
+                                          found = True
+                                          break
+                                      inode = inode.next
+                              if not found:
+                                  raise ValueError("Node not in the list")
+                              self.size -= 1
+
+                          #Se elimina un objeto de la lista
+                          def remove(self, object: object):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              inode = self.head
+                              found = False
+                              if self.size == 1 and self.head.object == object:
+                                  self.head = None
+                                  self.tail = None
+                                  found = True
+                              else:
+                                  for i in range(self.size):
+                                      if inode.object == object:
+                                          if i == 0:
+                                              self.head = self.head.next
+                                              self.head.before = None
+                                          elif i == self.size - 1:
+                                              self.tail = self.tail.before
+                                              self.tail.next = None
+                                          else:
+                                              inode.next.before = inode.before
+                                              inode.before.next = inode.next
+                                          found = True
+                                          break
+                                      inode = inode.next
+                              if not found:
+                                  raise ValueError("No esta en la lista")
+                              self.size -= 1
+
+                          #Metodo si contiene un objeto
+                          def contains(self, item):
+                              try:
+                                  self.index(item)
+                                  return True
+                              except ValueError:
+                                  return False
+
+                          #Se crea una lista definiendo el inicio y el fin
+                          def subList(self, From, To):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              if To > self.size:
+                                  To = self.size
+                              subList = DoubleList()
+                              var = False
+                              inode = self.head
+                              for i in range(self.size):
+                                  if i == From:
+                                      subList.add(inode.object)
+                                      var = True
+                                      if From == To:
+                                          break
+                                  elif var and i < To:
+                                      subList.add(inode.object)
+                                  inode = inode.next
+                              return subList
+
+                          #Transforma la lista a un array
+                          def toArray(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              else:
+                                  array = [self.size]
+                                  inode = self.head
+                                  for i in range(self.size):
+                                      array[i] = inode.object
+                                      inode = inode.next
+                                  return array
+
+                          #Metodo de posicion de los objetos
+                          def index(self, object: object) -> int:
+                              for index, list_object in enumerate(self):
+                                  if list_object == object:
+                                      return index
+                              raise ValueError("No esta en la lista")
+
+                          #Se muestran todos los objetos de la lista
+                          def toString(self):
+                              return [node.object for node in self]
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Lista enlazada circular</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="listacircular">
+          Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          #Se crea la clase del nodo
+                          class ListNode(object):
+                              #Se inicializan los valores
+                              def __init__(self, object: object):
+                                  self.object = object
+                                  self.next: ListNode
+                                  self.next = None
+                                  self.before: ListNode
+                                  self.before = None
+
+                              #Se actualizan los valores
+                              def update(self, object: object):
+                                  self.object = object
+                              
+
+                          #Se crea la clase lista
+                          class CircularList(object):
+                              #Se inicializan los valores
+                              def __init__(self):
+                                  self.size = 0
+                                  self.content = DoubleList.DoubleList()
+
+                              #Metodo de iterador
+                              def __iter__(self):
+                                  yield from self.content
+                          
+                              #Se actualizan los valores
+                              def update(self):
+                                  if self.content.head is not None:
+                                      self.content.head.before = self.content.tail
+                                  self.size = self.content.size
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          #Retorna un true si la lista esta vacia y no si tiene objectos
+                          def isEmpty(self):
+                              return self.head is None
+
+                          #Retorna la cantidad de objetos
+                          def getSize(self):
+                              inode = self.head
+                              acum = 0
+                              while inode:
+                                  acum += 1
+                                  inode = inode.getNext()
+                              return acum
+
+                          #Se borran todos los elementos de la lista
+                          def clear(self):
+                              self.content.clear()
+                              self.update()
+
+                          #Se obtiene el primer valor de la lista
+                          def getHead(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              return self.head.object
+
+                          #Se obtiene el ultimo valor de la lista
+                          def getTail(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              return self.tail.object
+
+                          #Se busca un objeto en la lista
+                          def search(self, object):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              inode = self.head
+                              for i in range(self.size):
+                                  if inode.object == object:
+                                      return i
+                                  inode = inode.next
+                              return -1
+
+                          #Se añade un objeto a la lista
+                          def add(self, obj: object):
+                              self.content.add(obj)
+                              self.update()
+
+                          #Se inserta un objeto a la lista
+                          def insert(self, index: int, obj: object):
+                              self.content.insert(index, obj)
+                              self.update()
+
+                          #Se inserta un objeto a la primera posicion
+                          def insertHead(self, object):
+                              self.insert(0, object)
+
+                          #Se inserta un objeto a la ultima posicion
+                          def insertTail(self, object):
+                              self.insert(self.size - 1, object)
+
+                          #Se elimina un objeto de la lista
+                          def remove(self, obj: object):
+                              self.content.remove(obj)
+                              self.update()
+
+                          #Se elimina un nodo de la  lista
+                          def remove_node(self, node: ListNode.ListNode):
+                              self.content.remove_node(node)
+
+                          #Metodo si contiene un objeto
+                          def contains(self, object):
+                              return self.search(object) != -1
+
+                          #Se crea una lista definiendo el inicio y el fin
+                          def subList(self, From, To):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              if To > self.size:
+                                  To = self.size
+                              subList = CircularList()
+                              var = False
+                              inode = self.head
+                              for i in range(self.size):
+                                  if i == From:
+                                      subList.add(inode.object)
+                                      var = True
+                                      if From == To:
+                                          break
+                                  elif var and i < To:
+                                      subList.add(inode.object)
+                                  inode = inode.next
+                              return subList
+
+                          #Transforma la lista a un array
+                          def toArray(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              else:
+                                  array = [self.size]
+                                  inode = self.head
+                                  for i in range(self.size):
+                                      array[i] = inode.object
+                                      inode = inode.next
+                                  return array
+
+                          #Metodo de posicion de los objetos
+                          def index(self, obj: object) -> int:
+                              return self.content.index(obj)
+
+                          #Se muestran todos los objetos de la lista
+                          def toString(self):
+                              return [node.object for node in self]
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Lista doblemente enlazada circular</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="listacirculardoble">
+          Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          #Se crea la clase del nodo
+                          class ListNode(object):
+                              #Se inicializan los valores
+                              def __init__(self, object: object):
+                                  self.object = object
+                                  self.next: ListNode
+                                  self.next = None
+                                  self.before: ListNode
+                                  self.before = None
+
+                              #Se actualizan los valores
+                              def update(self, object: object):
+                                  self.object = object
+
+
+                          #Se crea la lista
+                          class DoubleCircularList(object):
+                              #Se inicializan los valores
+                              def __init__(self):
+                                  self.size = 0
+                                  self.content = DoubleList.DoubleList()
+                          
+                              #Metodo iterador
+                              def __iter__(self):
+                                  yield from self.content
+                          
+                              #Se actualizan los valores
+                              def update(self):
+                                  if self.content.head is not None:
+                                      self.content.head.before = self.content.tail
+                                  if self.content.tail is not None:
+                                      self.content.tail.next = self.content.head
+                                  self.size = self.content.size
+                              
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          #Retorna un true si la lista esta vacia y no si tiene objectos
+                          def isEmpty(self):
+                              return self.head is None
+
+                          #Retorna la cantidad de objetos
+                          def getSize(self):
+                              return self.size
+
+                          def clear(self):
+                              self.content.clear()
+                              self.update()
+
+                          #Se obtiene el primer valor de la lista
+                          def getHead(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              return self.head.object
+
+                          #Se obtiene el ultimo valor de la lista
+                          def getTail(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              return self.tail.object
+
+                          #Se busca un objeto en la lista
+                          def search(self, object):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              inode = self.head
+                              for i in range(self.size):
+                                  if inode.object == object:
+                                      return i
+                                  inode = inode.next
+                              return -1
+
+                          #Se añade un objeto a la lista
+                          def add(self, obj: object):
+                              self.content.add(obj)
+                              self.update()
+
+                          #Se inserta un objeto a la lista
+                          def insert(self, index: int, obj: object):
+                              self.content.insert(index, obj)
+                              self.update()
+
+                          #Se inserta un objeto a la primera posicion
+                          def insertHead(self, object):
+                              self.insert(0, object)
+
+                          #Se inserta un objeto a la ultima posicion
+                          def insertTail(self, object):
+                              self.insert(self.size - 1, object)
+
+                          #Se elimina un objeto de la lista
+                          def remove(self, obj: object):
+                              self.content.remove(obj)
+                              self.update()
+
+                          #Se elimina un nodo de la lista
+                          def remove_node(self, node: ListNode.ListNode):
+                              self.content.remove_node(node)
+
+                          #Metodo si contiene un objeto
+                          def contains(self, item):
+                              try:
+                                  self.index(item)
+                                  return True
+                              except ValueError:
+                                  return False
+
+                          #Se crea una lista definiendo el inicio y el fin
+                          def subList(self, From, To):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              if To > self.size:
+                                  To = self.size
+                              subList = DoubleList()
+                              var = False
+                              inode = self.head
+                              for i in range(self.size):
+                                  if i == From:
+                                      subList.add(inode.object)
+                                      var = True
+                                      if From == To:
+                                          break
+                                  elif var and i < To:
+                                      subList.add(inode.object)
+                                  inode = inode.next
+                              return subList
+
+                          #Transforma la lista a un array
+                          def toArray(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              else:
+                                  array = [self.size]
+                                  inode = self.head
+                                  for i in range(self.size):
+                                      array[i] = inode.object
+                                      inode = inode.next
+                                  return array
+
+                          #Metodo de posicion de los objetos
+                          def index(self, obj: object) -> int:
+                              return self.content.index(obj)
+
+                          #Se muestran todos los objetos de la lista
+                          def toString(self):
+                              return [node.object for node in self]
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Pila dinamica</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="piladinamica">
+          // Ingresar aqui una breve descripcion de la clase. 
+          EJ:Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Pila basada en arreglos</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="pilaarray">
+          Esta estructura se compone de una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          #Se crea la clase
+                          class ArrayStack(object):
+                              #Se inicializan los valores
+                              def __init__(self, size: int):
+                                  self.max = size
+                                  self.size = 0
+                                  self.content = [None] * size
+                                  self.reversed = False
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          #Metodo de vaciar lista
+                          def clear(self):
+                              self.content.clear()
+
+                          #Metodo de si esta vacio
+                          def isEmpty(self) -> bool:
+                              return self.size == 0
+
+                          #metodo para mirar
+                          def peek(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              if self.reversed:
+                                  return self.content[self.size - 1]
+                              return self.content[0]
+
+                          #metodo para quitar
+                          def pop(self):
+                              if self.isEmpty():
+                                  raise IndexError("la lista esta vacia")
+                              if self.reversed:
+                                  value = self.content[self.size - 1]
+                                  self.content[self.size - 1] = None
+                                  self.size -= 1
+                                  return value
+                              value = self.content[0]
+                              self.content = [*self.content[1:], None]
+                              self.size -= 1
+                              return value
+
+                          #Metodo para apilar
+                          def push(self, obj: object):
+                              if self.size == self.max:
+                                  raise IndexError("Alcanzó el tamaño máximo de pila")
+                              if self.reversed:
+                                  self.content[self.size] = obj
+                              else:
+                                  self.content = [obj, *self.content[:-1]]
+                              self.size += 1
+
+                          #Metodo de tamaño
+                          def size(self):
+                              return self.size
+
+                          #Metodo de buscar
+                          def search(self, obj: object) -> bool:
+                              return obj in self.content
+
+                              #Metodo de reversa
+                          def reverse(self):
+                              self.reversed = not self.reversed
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Cola dinamica</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="coladinamica">
+          Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Cola basada en arreglos</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="colaarray">
+          Esta estructura se compone de una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Arbol binario</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="arbolbinario">
+          EJ:Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Arbol n-nario</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="arbolninario">
+          EJ:Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Tablas de hash</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="tablahash">
+          // Ingresar aqui una breve descripcion de la clase. 
+          EJ:Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+
+      <h1>Grafo</h1><br><br>
+      <p>
+      <h2>Estructura </h2><br>
+      <p id="grafo">
+          // Ingresar aqui una breve descripcion de la clase. 
+          EJ:Esta estructura se compone de una clase nodo y una clase lista.
+      </p>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      <h2>Metodos </h2><br>
+      <pre>
+                      <code class="language-python">
+                          
+                      </code>
+                  </pre>
+      </p>
+      <h2><a href="#estructuras">Inicio</a></h2><br>
+    
+
+
+  </div>
+</div>
+<script src="static/prism.js"></script> 
+
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-32">
+  <h1 class="w3-margin w3-xlarge">El que sabe sabe y no como el que esta aprendiendo</h1>
+  <h1 class="w3-margin w3-large">-Anonimo</h1>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+ <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
 </body>
-
 </html>

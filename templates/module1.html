@@ -1,127 +1,51 @@
-<html>
-
-<head>
-    <link rel="stylesheet" href="prism.css">
-    <title>Home</title>
-    <style type="text/css">
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        #header {
-            margin: auto;
-            width: 500px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        #LVaED {
-            
-            font-family: sans-serif;
-            font-size: 25px;
-            background-color: black;
-            padding-top: 10px;
-            padding-bottom: 20px;
-        }
-
-        #docBlock {
-            margin-top: 100px;
-            margin-left: 250px;
-            margin-right: 250px;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #fff;
-            border: 2px solid #000000;
-            border-radius: 25px;
-            padding-left: 10px;
-        }
-
-        ul,
-        ol {
-            list-style: none;
-        }
-
-        .nav {
-            width: 500px;
-
-            margin: 0 auto;
-
-            margin-right: 150px;
-            margin-left: 75px;
-        }
-
-        .nav>li {
-            float: left;
-        }
-
-        .nav li a {
-            background-color: #000;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 12px;
-            display: block;
-        }
-
-        .nav li a:hover {
-            background-color: #434343;
-        }
-
-        .nav li ul {
-            display: none;
-            position: absolute;
-            min-width: 140px;
-        }
-
-        .nav li:hover>ul {
-            display: block;
-        }
-
-        .nav li ul li {
-            position: relative;
-        }
-
-        .nav li ul li ul {
-            right: -140px;
-            top: 0px;
-        }
-
-        body {
-     background-image: url("static/oriental-tiles.png");
-     
-     }
-    </style>
-    <div id="LVaED">
-        <h1 style="text-align:center;color: white;" color: white;>LVaED </h1>
-        </div>
-</head>
-
+<!DOCTYPE html>
+<html lang="en">
+<title>modulo1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
 <body>
 
-    <div id="header">
-        <nav>
-
-            <ul class="nav">
-                <li><a href="index">Inicio</a></li>
-                <li><a href="module-1">Modulo 1</a></li>
-
-                
-            </li>
-            <li><a href="">Modulo 2</a>
-                <ul>
-                    <li><a href="module-2-Java">Java</a></li>
-                    <li><a href="module-2-Python">Pyhon</a></li>
-                    <li><a href="module-2-Cpp">C++</a></li>
-                </ul>
-            </li>
-            <li><a href="module-3">Modulo 3</a></li>
-            
-            </ul>
-
-        </nav>
-
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="index" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+      <a href="module-1" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Modulo1</a>
+      <a href="module-2-Java" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Modulo 2.Java</a>
+      <a href="module-2-Python" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Modulo 2.Python</a>
+      <a href="module-3" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Modulo 3</a>
     </div>
-    <div id="docBlock">
-            <br>
+  
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+      <a href="module-1" class="w3-bar-item w3-button w3-padding-large">Modulo1</a>
+      <a href="module2-Java" class="w3-bar-item w3-button w3-padding-large">Modulo 2.Java</a>
+      <a href="module2-Python" class="w3-bar-item w3-button w3-padding-large">Modulo 2.Python</a>
+      <a href="module-3" class="w3-bar-item w3-button w3-padding-large">Modulo 3</a>
+    </div>
+  </div>
 
+<!-- Header -->
+<header class="w3-container w3-dark-gray w3-center" style="padding:64px 16px">
+  <h1 class="w3-margin w3-jumbo">Modulo de presentación</h1>
+
+  
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      
         <h1>Listas enlazadas </h1><br><br>
         
         <h2>Concepto </h2><br>
@@ -232,10 +156,35 @@
         <p></p>
         <h2>Ventajas y desventajas</h2><br>
         <p></p><br><br>
-
-        
     </div>
-    <script src="prism.js"></script> 
-</body>
 
+
+  </div>
+</div>
+
+
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-32">
+    <h1 class="w3-margin w3-xlarge">Si quieres cambiar el mundo, cámbiate a ti mismo</h1>
+    <h1 class="w3-margin w3-large">-Gandhi</h1>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+ <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
 </html>
