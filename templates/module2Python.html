@@ -48,8 +48,34 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     
       
       <h1>Paradigma </h1><br>
+      <p>
+          Multiparadigma
+      </p><br>
 
       <h1>Ventajas y desventajas </h1><br><br>
+      <p style="text-align: justify;">Ventajas 
+      <li>
+          Simplificado: Este lenguaje simplifica la programacion, Es un gran lenguaje para scripting, con codificación ágil.
+      </li>
+      <li>
+          Flexible: El lenguaje le da herramientas sobre listas de varios tipos de datos y no hace falta que declares cada tipo de dato.
+      </li>
+      <li>
+          Multiplataforma: Este lenguaje se puede emplear en varios sistemas operativos como Linux, Windows o Mac OS. Por otra parte, incluye las librerías más populares dentro del intérprete.
+      </li>
+      </p><br>
+
+      <p style="text-align: justify;">Desventajas
+      <li>
+          Hosting: existen muchos servidores que no soportan Python y en caso de hacerlo, su configuración suele ser compleja.
+      </li>
+      <li>
+          Librerías incorporadas : A pesar de incluir un compendio de librerías populares, algunas de esas no son necesarias.
+      </li>
+      <li>
+          Curva de aprendizaje: Para el desarrollo web toma tiempo en aprenderlo, sobre todo si no se tiene idea sobre la programación orientada a objetos.
+      </li>
+      </p><br>
 
       <h1 id="estructuras"> Estructuras : </h1><br>
       <h2><a href="#listaenlazada">Lista enlazada</a></h2>
@@ -836,19 +862,90 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       <h1>Pila dinamica</h1><br><br>
       <p>
       <h2>Estructura </h2><br>
-      <p id="piladinamica">
-          // Ingresar aqui una breve descripcion de la clase. 
-          EJ:Esta estructura se compone de una clase nodo y una clase lista.
+      <p id="piladinamica"> 
+          Esta estructura se compone de una clase nodo y una clase lista.
       </p>
       <pre>
                       <code class="language-python">
-                          
+                        #se crea la clase pila con lista
+                        class ListStack(object):
+                            #Se inicializan los valores
+                            def __init__(self):
+                                self.size = 0
+                                self.content = Lists.DoubleList.DoubleList()
+                                self.reversed = False
+                        
+                            #Iterador
+                            def __iter__(self):
+                                inode = self.content.head
+                                for i in range(self.size):
+                                    yield inode.object
+                                    inode = inode.next
+                        
+                            #Se actualizana el tamaño
+                            def update(self):
+                                self.size = self.content.size
                       </code>
                   </pre>
       <h2>Metodos </h2><br>
       <pre>
                       <code class="language-python">
-                          
+                        #Metodo para vaciar
+                        def clear(self):
+                            self.content.clear()
+                    
+                        #Metodo boleano si esta vacio
+                        def isEmpty(self) -> bool:
+                            return self.content.size == 0
+                    
+                        #Metodo para mirar
+                        def peek(self):
+                            if self.isEmpty():
+                                raise IndexError("la pila esta vacia")
+                            if self.reversed:
+                                return self.content[self.content.size - 1]
+                            return self.content[0]
+                    
+                        #Metodo para quitar
+                        def pop(self):
+                            if self.isEmpty():
+                                raise IndexError("la pila esta vacia")
+                            if self.reversed:
+                                value = self.content[self.content.size - 1]
+                                del self.content[self.content.size - 1]
+                                self.update()
+                                return value
+                            value = self.content[0]
+                            del self.content[0]
+                            self.update()
+                            return value
+                    
+                        #Metodo pra agregar
+                        def push(self, obj: object):
+                            if self.reversed:
+                                self.content.add(obj)
+                            else:
+                                if self.size == 0:
+                                    self.content.add(obj)
+                                else:
+                                    self.content.insert(0, obj)
+                            self.update()
+                    
+                        #Metodo del tamaño
+                        def size(self):
+                            return self.size
+                    
+                        #Metodo de buscar
+                        def search(self, obj: object) -> bool:
+                            return obj in self.content
+                    
+                        #Metodo de reversa
+                        def reverse(self):
+                            self.reversed = not self.reversed
+                    
+                        #Se muestran todos los valores
+                        def toString(self):
+                            return list(i for i in self)
                       </code>
                   </pre>
       </p>
@@ -939,13 +1036,73 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       </p>
       <pre>
                       <code class="language-python">
-                          
+                        #Se crea la clase cola con lista
+                        class ListQueue:
+                            #Se iniciaalizan los valores
+                            def __init__(self):
+                                self.content = DoubleList.DoubleList()
+                                self.reversed = False
+                        
+                            #Iterador
+                            def __iter__(self):
+                                inode = self.content.head
+                                for i in range(self.content.size):
+                                    yield inode.object
+                                    inode = inode.next
                       </code>
                   </pre>
       <h2>Metodos </h2><br>
       <pre>
                       <code class="language-python">
-                          
+                        #Se vacia la cola
+                        def clear(self):
+                            self.content.clear()
+                    
+                        #Metodo si esta vacio
+                        def isEmpty(self):
+                            return self.content.size == 0
+                    
+                        #Elimina el objeto de la cola
+                        def extract(self):
+                            if self.isEmpty():
+                                raise IndexError("La cola esta vacía")
+                            else:
+                                if self.reversed:
+                                    value = self.content[0]
+                                    del self.content[0]
+                                else:
+                                    value = self.content[self.content.size - 1]
+                                    del self.content[self.content.size - 1]
+                            return value
+                    
+                        #Agrega un objeto a la cola
+                        def insert(self, object):
+                            if self.isEmpty():
+                                self.content.add(object)
+                            else:
+                                if self.reversed:
+                                    self.content.add(object)
+                                else:
+                                    self.content.insert(0, object)
+                    
+                        #Metodo de tamaño
+                        def size(self):
+                            return self.content.size
+                    
+                        #Metodod de buscar
+                        def search(self, value):
+                            return value in self.content
+                    
+                        #Metodo de reversa
+                        def reverse(self):
+                            if self.reversed:
+                                self.reversed = False
+                            else:
+                                self.reversed = True
+                    
+                        #Se muestran todos los valores
+                        def toString(self):
+                            return list(i for i in self)
                       </code>
                   </pre>
       </p>
@@ -959,13 +1116,69 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       </p>
       <pre>
                       <code class="language-python">
-                          
+                        #Se crea la clase
+                        class ArrayQueue:
+                            #Se inicializan los valores
+                            def __init__(self):
+                                self.content = []
+                                self.reversed = False
                       </code>
                   </pre>
       <h2>Metodos </h2><br>
       <pre>
                       <code class="language-python">
-                          
+                        #Metodo de vaciar la cola
+                        def clear(self):
+                            self.content.clear()
+                    
+                        #Metodo de si esta vacio
+                        def isEmpty(self) -> bool:
+                            return self.size == 0
+                    
+                        #metodo para eliminar
+                        def extract(self):
+                            if self.isEmpty():
+                                raise IndexError("la cola esta vacia")
+                            else:
+                                if self.reversed:
+                                    value = self.content[0]
+                                    self.content = self.content[1:]
+                                else:
+                                    value = self.content.pop()
+                            return value
+                    
+                        #Metodo para insertar
+                        def insert(self, obj: object):
+                            if self.isEmpty():
+                                self.content.add(obj)
+                            else:
+                                if self.reversed:
+                                    self.content.add(obj)
+                                else:
+                                    self.content.insert(0, obj)
+                    
+                        #Metodo de tamaño
+                        def size(self):
+                            return self.size
+                    
+                        #Metodo de buscar
+                        def search(self, obj: object) -> bool:
+                            return obj in self.content
+                    
+                        #Metodo para ordenar
+                        def sort(self):
+                            self.content.sort()
+                    
+                        #Metodo de reversa
+                        def reverse(self):
+                            if self.reversed:
+                                self.reversed = False
+                            else:
+                                self.reversed = True
+                    
+                        #Metodo para mostrar la cola
+                        def toString(self):
+                            return str(self.content)
                       </code>
                   </pre>
       </p>
@@ -975,17 +1188,80 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       <p>
       <h2>Estructura </h2><br>
       <p id="arbolbinario">
-          EJ:Esta estructura se compone de una clase nodo y una clase lista.
+          Esta estructura se compone de una clase nodo y una clase arbol.
       </p>
       <pre>
                       <code class="language-python">
-                          
+                        #Se crea la clase nodo del arbol
+                        class BinaryNode():
+                            #Se inicializan los valores
+                            def __init__(self, object):
+                                self.left = None
+                                self.right = None
+                                self.object = object
+                        
+                        
+                        #Se crea la clase arbol
+                        class BinaryTree:
+                            #Se inicializan los valores
+                            def __init__(self):
+                                self.root = None
                       </code>
                   </pre>
       <h2>Metodos </h2><br>
       <pre>
                       <code class="language-python">
-                          
+                        #Metodo para agregar
+                        def insert(self, node, object):
+                            if node is None:
+                                node = BinaryNode(object)
+                            else:
+                                auxiliar = node.object
+                                if object < auxiliar:
+                                    node.left = self.insert(node.left, object)
+                                else:
+                                    node.right = self.insert(node.right, object)
+                            return node
+                    
+                        #Metodo inOrder
+                        def inOrder(self, node):
+                            if node is None:
+                                return None
+                            else:
+                                self.inOrder(node.left)
+                                print(node.object)
+                                self.inOrder(node.right)
+                    
+                        #Metodo preOrder
+                        def preOrder(self, node):
+                            if node is None:
+                                return None
+                            else:
+                                print(node.object)
+                                self.preOrder(node.left)
+                                self.preOrder(node.right)
+                    
+                        #Metodo postOrder
+                        def postOrder(self, node):
+                            if node is None:
+                                return None
+                            else:
+                                self.postOrder(node.left)
+                                self.postOrder(node.right)
+                                print(node.object)
+                    
+                        #Metodo de busca
+                        def search(self, object, node):
+                            if node is None:
+                                return None
+                            else:
+                                if object == node.object:
+                                    return node.object
+                                else:
+                                    if object < node.object:
+                                        return self.search(object, node.left)
+                                    else:
+                                        return self.search(object, node.right)
                       </code>
                   </pre>
       </p>
