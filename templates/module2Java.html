@@ -52,8 +52,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         <p>
             Oriendado a objetos
         </p><br>
-        <h1>Ventajas y desventajas </h1><br><br>
-        <p></p>
+        
         <h1 id="estructuras"> Estructuras : </h1><br>
         <h2><a href="#listaenlazada">Lista enlazada</a></h2>
         <h2><a href="#listadoble">Lista doblemente enlazada</a></h2>
@@ -64,9 +63,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         <h2><a href="#coladinamica">Cola dinamica</a></h2>
         <h2><a href="#colaarray">Cola basada en arreglos</a></h2>
         <h2><a href="#arbolbinario">Arbol Binario</a></h2>
-        <h2><a href="#arbolninario">Arbol n-nario</a></h2>
-        <h2><a href="#tablahash">Tablas de Hash</a></h2>
-        <h2><a href="#grafo">Grafos</a></h2>
+        <h2><a href="#arbolninario">Arbol de busqueda binaria</a></h2>
+        
         <br>
 
         <h1>Lista Enlazada</h1><br><br>
@@ -2868,63 +2866,338 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         </pre>
         </p>
         <h2><a href="#estructuras">Inicio</a></h2><br>
-        <h1>Arboles n-narios</h1><br><br>
+        <h1>Arboles de busqueda binaria</h1><br><br>
         <p>
         <h2>Estructura  </h2><br>
         <p id="arbolninario">
-            Esta estructura se compone de una sola clase cola
+            Esta estructura se compone de una clase local nodo y una clase ABB
         </p>
         <pre>
             <code class="language-java">
+                // Clase nodo, metodos y atributos
+                class Node {
+
+                    int value;
+                    Node left;
+                    Node right;
                 
+                    Node(int value) {
+                        this.value = value;
+                        right = null;
+                        left = null;
+                    }
+                    
+                    Node(Node left, int value, Node right) {
+                        this.value = value;
+                        this.right = right;
+                        this.left = left;
+                    }
+                
+                    // Recursivamente recorre por la izquierda de los nodos hasta llegar a un izq nulo
+                    // Es decir con un movimiento a la derecha y este metodo llega hasta el sucesor en 
+                    // Inorder
+                    Node findSuccessor() {
+                        if (this.left == null) {
+                            return this;
+                        } else {
+                            return this.left.findSuccessor();
+                        }
+                    }
+                    
+                    // Con un movimiento a la derecha. y este metodo, encuentra el padre de sucesor en inorder.
+                    Node SubfindSuccessor() {
+                        if (this.left.left == null) {
+                            return this;
+                        } else {
+                            return this.left.SubfindSuccessor();
+                        }
+                    }
+                
+                    // Con un movimiento a la derecha. y este metodo, elimina el sucesor en inorder.
+                    void DeletefindSuccessor() {
+                        if (this.left.left == null) {
+                            this.left=null;
+                        } else {
+                            this.left.DeletefindSuccessor();
+                        }
+                    }
+                    
+                    // Recursivamente recorre por la derecha de los nodos hasta llegar a un derecho nulo
+                    // Es decir con un movimiento a la derecha y este metodo llega hasta el sucesor en 
+                    // Inorder
+                    public Node findPredecessor() {
+                        if (this.right == null) {
+                            return this;
+                        } else {
+                            return this.right.findPredecessor();
+                        }
+                    }
+                    
+                    // Con un movimiento a la izquierda. y este metodo, encuentra el padre de sucesor en inorder.
+                    public Node SubfindPredecessor() {
+                        if (this.right.right == null) {
+                            return this;
+                        } else {
+                            return this.right.findPredecessor();
+                        }
+                    }
+                    
+                    // Con un movimiento a la izquierda. y este metodo, elimina el sucesor en inorder.
+                    void DeletefindPredecessor() {
+                        if (this.right.right == null) {
+                            this.right=null;
+                        } else {
+                            this.right.DeletefindPredecessor();
+                        }
+                    }
+                }
+                // Clase arbol, atributos y constructores
+                public class BinarySearchTree {
+                    Node root;
+                
+                    public BinarySearchTree() {
+                        this.root = null;
+                
+                    }
+                
+                    public BinarySearchTree(int value) {
+                        this.root = subBinTree(null, value, null);
+                    }
+                
+                    public Node subBinTree(Node left, int value, Node right) {
+                        return new Node(left, value, right);
+                    }
             </code>
         </pre>
         <h2>Metodos </h2><br>
         <pre>
             <code class="language-java">
+                // Define si el arbol se encuentra vacio
+    public boolean isEmpty() {
+        return root == null;
+    }
+    
+    // Imprime el arbol en preorder
+    public void preorder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        System.out.print(node.value + " ");
+        preorder(node.left);
+        preorder(node.right);
+    }
+    
+    // Imprime el arbol en postorder
+    public void postorder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        postorder(node.left);
+        postorder(node.right);
+        System.out.print(node.value + " ");
+    }
+    
+    // Imprime el arbol en inorder
+    public void inorder(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        inorder(node.left);
+        System.out.print(node.value + " ");
+        inorder(node.right);
+    }
+    
+    // Inserta un nodo dada la raiz del arbol y el valor del nodo
+    public boolean insert(Node node, int value){
+        try {
+            if (isEmpty()) {
+                this.root=subBinTree(null, value, null);
+                return true;
+            } else if (node.value==value) {
+                System.out.println("Node already exists");
+                return false;
+            } else if(node.value<value){
+                if(node.right ==null){
+                    node.right=subBinTree(null, value, null);
+                    return true;
+                }else{
+                    return insert(node.right, value);
+                }
+            }else if(node.value>value){
+                if(node.left ==null){
+                    node.left=subBinTree(null, value, null);
+                    return true;
+                }else{
+                    return insert(node.left, value);
+                }
+            }
+
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    // Encuentra un nodo y lo retorna, dado la raiz del arbol y el valor del nodo
+    public Node search(Node node, int value) {
+        try {
+            if (isEmpty()) {
+                return null;
+            } else if (node.value==value) {
+                return node;
+            } else if(node.value<value){
+                return search(node.right, value);
+            }else if(node.value>value){
+                return search(node.left, value);
+            }
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    // Remueve, dado la raiz del arbol y el valor del nodo
+    public boolean remove(Node node,int value){
+        try {
+            if (isEmpty()) {
+                return false;   
+            }else if (this.root.value==value) {
+                Node parent = node;
+                // Nasty
+                if(parent.right.left!=null){
+                    Node aux = parent.right.findSuccessor();
+                    int pup = aux.value;
+                    this.remove(root, aux.value);
+                    parent.value = pup;
+                }else if(parent.left.right!=null){
+                    Node aux = parent.left.findPredecessor();
+                    int pup = aux.value;
+                    this.remove(root, aux.value);
+                    parent.value=pup;
+                }else{
+                    Node aux = parent.right.findSuccessor();
+                    int pup = aux.value;
+                    this.remove(root, aux.value);
+                    parent.value = pup;
+                }
+                return true;
+            } else if (node.right.value==value) {
+                Node parent = node;
+                Node son = node.right;
+                if (son.left == null && son.right == null) {
+
+                    parent.right = null;
+                    return true;
+                } else if (son.left != null && son.right == null) {
+                    parent.right = son.left;
+                    son.left = null;
+                    return true;
+                } else if (son.left == null && son.right != null) {
+                    
+                    parent.right = son.right;
+                    son.right = null;
+                    return true;
+                } else if (son.left != null && son.right != null) {
+                    
+                    if (!son.right.equals(son.right.findSuccessor())) {
+                        Node aux = son.right.findSuccessor();
+                        Node aux2 = son.right.SubfindSuccessor();
+                        if(aux.right!=null){
+                            aux2.left=aux.right;
+                        }else if(aux.right==null){
+                            son.right.DeletefindSuccessor();
+                        }
+                        aux.right = son.right;
+                        aux.left = son.left;
+                        parent.right = aux;
+                        return true;
+                    }
+                    
+                    if (!son.left.equals(son.left.findPredecessor())) {
+                        Node aux = son.left.findPredecessor();
+                        Node aux2 = son.left.SubfindPredecessor();
+                        if(aux.left!=null){
+                            aux2.right=aux.left;
+                        }else if(aux.left==null){
+                            son.left.DeletefindPredecessor();
+                        }
+                        aux.right = son.right;
+                        aux.left = son.left;
+                        parent.right = aux;
+                        return true;
+                    }
+                    
+                }
+
+            } else if (node.left.value==value) {
+                Node parent = node;
+                Node son = node.left;
+                if (son.left == null && son.right == null) {
+                    
+                    parent.left = null;
+                    return true;
+                } else if (son.left != null && son.right == null) {
+                    
+                    parent.left = son.left;
+                    son.left = null;
+                    return true;
+                } else if (son.left == null && son.right != null) {
+                    
+                    parent.left = son.right;
+                    son.right = null;
+                    return true;
+                } else if (son.left != null && son.right != null) {
+                    System.out.println("Aqui2");
+                    
+                    if (!son.right.equals(son.right.findSuccessor())) {
+                        Node aux = son.right.findSuccessor();
+                        Node aux2 = son.right.SubfindSuccessor();
+                        if(aux.right!=null){
+                            aux2.left=aux.right;
+                        }else if(aux.right==null){
+                            son.right.DeletefindSuccessor();
+                        }
+                        aux.right = son.right;
+                        aux.left = son.left;
+                        parent.left = aux;
+                        return true;
+                    }
+                     
+                    if (!son.left.equals(son.left.findPredecessor())) {
+                        Node aux = son.left.findPredecessor();
+                        Node aux2 = son.left.SubfindPredecessor();
+                        if(aux.left!=null){
+                            aux2.right=aux.left;
+                        }else if(aux.left==null){
+                            son.left.DeletefindPredecessor();
+                        }
+                        aux.right = son.right;
+                        aux.left = son.left;
+                        parent.left = aux;
+                        return true;
+                    }
+                    
+                }
                 
+            }else if(node.value<value){
+                return remove(node.right, value);
+            }else if(node.value>value){
+                return remove(node.left, value);
+            }
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    }
             </code>
         </pre>
         </p>
         <h2><a href="#estructuras">Inicio</a></h2><br>
-        <h1>Tablas de Hash</h1><br><br>
-        <p>
-        <h2>Estructura  </h2><br>
-        <p id="tablahash">
-            Esta estructura se compone de una sola clase cola
-        </p>
-        <pre>
-            <code class="language-java">
-                
-            </code>
-        </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-            <code class="language-java">
-                
-            </code>
-        </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
-        <h1>Grafos</h1><br><br>
-        <p>
-        <h2>Estructura  </h2><br>
-        <p id="grafo">
-            Esta estructura se compone de una sola clase cola
-        </p>
-        <pre>
-            <code class="language-java">
-                
-            </code>
-        </pre>
-        <h2>Metodos </h2><br>
-        <pre>
-            <code class="language-java">
-                
-            </code>
-        </pre>
-        </p>
-        <h2><a href="#estructuras">Inicio</a></h2><br>
+        
 
     </div>
 
