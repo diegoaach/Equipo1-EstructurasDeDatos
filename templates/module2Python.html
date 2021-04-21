@@ -1188,17 +1188,80 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       <p>
       <h2>Estructura </h2><br>
       <p id="arbolbinario">
-          EJ:Esta estructura se compone de una clase nodo y una clase lista.
+          Esta estructura se compone de una clase nodo y una clase arbol.
       </p>
       <pre>
                       <code class="language-python">
-                          
+                        #Se crea la clase nodo del arbol
+                        class BinaryNode():
+                            #Se inicializan los valores
+                            def __init__(self, object):
+                                self.left = None
+                                self.right = None
+                                self.object = object
+                        
+                        
+                        #Se crea la clase arbol
+                        class BinaryTree:
+                            #Se inicializan los valores
+                            def __init__(self):
+                                self.root = None
                       </code>
                   </pre>
       <h2>Metodos </h2><br>
       <pre>
                       <code class="language-python">
-                          
+                        #Metodo para agregar
+                        def insert(self, node, object):
+                            if node is None:
+                                node = BinaryNode(object)
+                            else:
+                                auxiliar = node.object
+                                if object < auxiliar:
+                                    node.left = self.insert(node.left, object)
+                                else:
+                                    node.right = self.insert(node.right, object)
+                            return node
+                    
+                        #Metodo inOrder
+                        def inOrder(self, node):
+                            if node is None:
+                                return None
+                            else:
+                                self.inOrder(node.left)
+                                print(node.object)
+                                self.inOrder(node.right)
+                    
+                        #Metodo preOrder
+                        def preOrder(self, node):
+                            if node is None:
+                                return None
+                            else:
+                                print(node.object)
+                                self.preOrder(node.left)
+                                self.preOrder(node.right)
+                    
+                        #Metodo postOrder
+                        def postOrder(self, node):
+                            if node is None:
+                                return None
+                            else:
+                                self.postOrder(node.left)
+                                self.postOrder(node.right)
+                                print(node.object)
+                    
+                        #Metodo de busca
+                        def search(self, object, node):
+                            if node is None:
+                                return None
+                            else:
+                                if object == node.object:
+                                    return node.object
+                                else:
+                                    if object < node.object:
+                                        return self.search(object, node.left)
+                                    else:
+                                        return self.search(object, node.right)
                       </code>
                   </pre>
       </p>
