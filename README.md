@@ -59,6 +59,8 @@ Jean Pierre Parra Suarez
 Actividades** <br />
 Completacion del modulo 3 Avances con el modulo 3(parte codigo a grafo),Responsable: Sebastian G. <br />
 Completado al:100%<br />
+Actualizacion de las vistas de la aplicacion web, Responsable: Sebastian G. <br />
+Completado al:100%<br />
 Implementacion del arbol binario de busqueda en java, Responsable: Sebastian G. <br />
 Completado al:100%<br />
 Implementacion del arbol binario en python, Responsable: Jean P. <br />
