@@ -95,6 +95,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         <li>Ordenar</li>
         <li>Buscar</li>
         <h2>Ventajas y desventajas</h2><br>
+        <li>Facil gestion y almacenamiento de datos de manera ordenada</li>
+        <li>Puede tener instrucciones para saltos o paro, de ser necesario</li>
+        <li>Solo se puede insertar o extraer por un extremo</li>
+        <li>Cuando se implementa con arreglos, tienen un tamaño definido y limitado</li>
+        <br><br>
 
         
 
@@ -109,9 +114,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
             con el mismo nivel de prioridad, cumpliran con el Fi-Fo, ordenandose por orden de insercion. 
         </p>
         <h2>Operaciones permitidas</h2><br>
-        <p></p>
+        <li>Añadir un elemento a la cola</li>
+        <li>Sacar de la cola</li>
+        <li>Obtener el elemento al frente</li>
+        <li>Vaciar la cola</li>
+        <li>Verificar el estado de la cola (Si esta vacia)</li>
         <h2>Ventajas y desventajas</h2><br>
-        <p></p><br><br>
+        <li>Organizacion de tareas o datos a medida que son creados</li>
+        <li>Tiempo de acceso y ejecucion dependiente de la cantidad de elementos que se tengan almacenados en las colas</li>
+        <br><br>
 
         <h1>Arboles </h1><br><br>
         <h2>Concepto </h2><br>
@@ -131,8 +142,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
         </p>
         <h2>Operaciones permitidas</h2><br>
-        <p></p>
+        <li>Crear el arbol</li>
+        <li>Comprobar si está vacio</li>
+        <li>Obtener la raiz</li>
         <h2>Ventajas y desventajas</h2><br>
+        <li>Organizacion de datos jerarquizada</li>
+        <li>Complicacion en la busqueda de datos</li>
         <p></p><br><br>
 
         <h1>Arboles binarios </h1><br><br>
@@ -142,13 +157,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
           que cada uno de los elementos tiene un solo antecesor y puede tener uno, dos o ningún sucesor y que 
           existe un elemento llamado “raíz” que no tiene ningún antecesor. <br>
           En base a esta estructura, se obtienen los conocidos como Arboles binarios de busqueda, los cuales siguen
-          los principios de los arboles binarios, sin embargo, se caracterizan porque normalmente almacenan valores numericos, de manera
+          los mismos principios de los arboles binarios, sin embargo, se caracterizan porque normalmente almacenan valores numericos, de manera
           que segun el valor de cada nodo, almacenan un valor menor en su rama izquierda y un valor mayor en su rama derecha, haciendo que
           la busqueda de los datos sea mas agil al comparar si el valor que se quiera obtener sea mayor o menor que la raiz.
         </p>
         <h2>Operaciones permitidas</h2><br>
-        <p></p>
+        <li>Crear el arbol</li>
+        <li>Comprobar si está vacio</li>
+        <li>Obtener la raiz</li>
+        <li>Obtener el subarbol izquierdo o derecho</li>
+        <li>Insertar  un nodo, sea a la izquierda o a la derecha</li>
+        <li>Eliminar un nodo</li>
+        <li>Obtener la altura del arbol</li>
         <h2>Ventajas y desventajas</h2><br>
+        <li>Aprovechamiento de memoria</li>
+        <li>Recorrido mas eficiente del arbol al saber que hay un camino definido </li>
+        <li>Acceso no directo a los elementos, se debe recorrer el arbol para encontrarlo</li>
         <p></p><br><br>
 
         <h1>Arboles AVL </h1><br><br>
@@ -161,17 +185,38 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         </p>
         <h2>Operaciones permitidas</h2><br>
         <li>Crear el arbol</li>
-        <li></li>
+        <li>Insertar nodos</li>
+        <li>Rotaciones</li>
         <h2>Ventajas y desventajas</h2><br>
+        <li>
+          El arbol siempre se mantendra equilibrado gracias a las rotaciones, lo cual evitara la sobrecarga y puede optimizar
+          el recorrido de este
+        </li>
+        <li>Implementacion compleja para lograr que se equilibre</li>
+
         <p></p><br><br>
 
         <h1>Arboles B </h1><br><br>
         <h2>Concepto </h2><br>
-        <p></p>
+        <p>Los arboles B son arboles n-arios, donde cada uno de sus nodos tiene por maximo n ramas y siempre estan perfectamente
+          equilibrados. Cada uno de sus nodos (en estos arboles se acostumbra la denominacion página) son accedidos en bloque.<br>
+          Otras caracteristicas de estos arboles son:<br>
+          <li>Todas las paginas hoja estan en el mismo nivel</li>
+          <li>Todas las paginas tienen como maximo m ramas y como minimo m/2 ramas, es decir la mitad de su capacidad</li>
+          <li></li>
+        </p>
+        </p>
         <h2>Operaciones permitidas</h2><br>
-        <p></p>
+        <li>Crear el arbol</li>
+        <li>Buscar dentro del arbol</li>
+        <li>Insertar claves dentro del arbol</li>
+        <li>Eliminar claves del arbol</li>
         <h2>Ventajas y desventajas</h2><br>
-        <p></p><br><br>
+        <li>Bastante eficiente al poder disminuir la altura de los arboles, haciendo que sean necesarias menos rotaciones,
+          por ende aumentando mucho la eficiencia en la busqueda y obtencion de datos
+        </li>
+        <li>Normalmente se utilizan arboles B de orden 5, ya que los ordenes mayores aumentarian en gran medida la complejidad</li>
+        <br><br>
   </div>
 </div>
 
