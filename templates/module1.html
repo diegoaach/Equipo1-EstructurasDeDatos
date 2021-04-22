@@ -57,14 +57,17 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
                 Simplemente enlazadas, cuando solo se pueden recorrer en un solo sentido, es decir sus nodos incluyen una referencia al 
                 nodo que les sigue, pero no al anterior
             </li>
+            <img src="static/Lista enlazada simple.png"  width="1000" height="167">
             <li>
                 Doblemente enlazada, cuando sus nodos contienen referencias al nodo anterior y al proximo
                 haciendo que se pueda recorrer hacia cualquier sentido.
             </li>
+            <img src="static/Lista enlazada doble.png"  width="1000" height="167">
             <li>  
                 Circulares cuando el ultimo objeto, llamado cola, tiene una referencia al primer nodo, llamado cabeza, como si fuera su siguiente
             </li>
-        
+            <img src="static/Lista enlazada circular.png"  width="1000" height="167">
+        <img src="static/Lista enlazada circular doble.png"  width="1000" height="200">
 
         </p><br>
         <h2>Operaciones permitidas</h2><br>
@@ -83,12 +86,18 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         <li>Dificultad para acceder a posiciones intermedias</li>
         <br><br>
 
+        
+        
+        
+
         <h1>Pilas </h1><br><br>
         <h2>Concepto </h2><br>
         <p style="text-align: justify;">Las pilas son una estructura de datos no fundamental, la cual requiere de, ya sea una lista enlazada o un arreglo
             para poder realizarse o presentarse. Esta estructura se caracteriza con el principio de Li-Fo, el cual 
             significa Last in, First Out, representando que el ultimo elemento añadido es el primero al que se puede acceder en la pila.
         </p>
+
+        <img src="static/Pila.png"  width="633" height="672">
         <h2>Operaciones permitidas</h2><br>
         <li>Añadir a la pila</li>
         <li>Eliminar el ultimo elemento añadido</li>
@@ -113,6 +122,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
             a la misma, donde los elementos que tengan la mayor prioridad, se posicionaran al inicio de la cola. Si hay elementos 
             con el mismo nivel de prioridad, cumpliran con el Fi-Fo, ordenandose por orden de insercion. 
         </p>
+
+        <img src="static/Colas.png"  width="1000" height="141">
+
         <h2>Operaciones permitidas</h2><br>
         <li>Añadir un elemento a la cola</li>
         <li>Sacar de la cola</li>
@@ -141,6 +153,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
           <li>Altura es el maximo numero de niveles de los nodos del arbol</li>
 
         </p>
+
+        <img src="static/Arbol.png"  width="1000" height="560">
         <h2>Operaciones permitidas</h2><br>
         <li>Crear el arbol</li>
         <li>Comprobar si está vacio</li>
@@ -161,6 +175,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
           que segun el valor de cada nodo, almacenan un valor menor en su rama izquierda y un valor mayor en su rama derecha, haciendo que
           la busqueda de los datos sea mas agil al comparar si el valor que se quiera obtener sea mayor o menor que la raiz.
         </p>
+
+        <img src="static/Arbol binario.png"  width="1000" height="527">
+
+        <img src="static/Arbol binario de busqueda.png"  width="680" height="350">
         <h2>Operaciones permitidas</h2><br>
         <li>Crear el arbol</li>
         <li>Comprobar si está vacio</li>
@@ -183,6 +201,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
           La condición se explica que “Si Vr es la raíz de cualquier subárbol de un árbol equilibrado, y h la altura 
           de la rama izquierda entonces la altura de la rama derecha puede tomar los valores: h-1, h, h+1”
         </p>
+
+        
         <h2>Operaciones permitidas</h2><br>
         <li>Crear el arbol</li>
         <li>Insertar nodos</li>
