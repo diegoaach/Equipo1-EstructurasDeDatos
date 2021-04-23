@@ -55,19 +55,28 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
             Las listas pueden ser 
             <li>
                 Simplemente enlazadas, cuando solo se pueden recorrer en un solo sentido, es decir sus nodos incluyen una referencia al 
-                nodo que les sigue, pero no al anterior
+                nodo que les sigue, pero no al anterior. <br>
+                En la imagen se puede apreciar la representacion de esto, donde cada uno de los nodos
+                esta direccionado hacia su nodo proximo.
             </li>
             <img src="static/Lista enlazada simple.png"  width="1000" height="167">
             <li>
                 Doblemente enlazada, cuando sus nodos contienen referencias al nodo anterior y al proximo
-                haciendo que se pueda recorrer hacia cualquier sentido.
+                haciendo que se pueda recorrer hacia cualquier sentido. <br>
+                La imagen describe como los nodos estan direccionados hacia su nodo proximo y al anterior
             </li>
             <img src="static/Lista enlazada doble.png"  width="1000" height="167">
             <li>  
-                Circulares cuando el ultimo objeto, llamado cola, tiene una referencia al primer nodo, llamado cabeza, como si fuera su siguiente
+                Circulares cuando el ultimo objeto, llamado cola, tiene una referencia al primer nodo, llamado cabeza, como si fuera su siguiente.<br>
+                La imagen muestra graficamente como se forma un ciclo en un sentido, teniendo una referencia de la cola hasta la cabeza de la lista.
             </li>
             <img src="static/Lista enlazada circular.png"  width="1000" height="167">
-        <img src="static/Lista enlazada circular doble.png"  width="1000" height="200">
+            <li>Circular doblemente enlazada, la cual cumple con el principio de las listas circulares de tener referencia desde
+              la cola hasta la cabeza, sin embargo su particularidad es que es bidireccional en todos sus nodos, permitiendo que la 
+              cabeza tambien tenga referencias a la cola, como su anterior. Esto se representa mejor en la siguiente imagen.
+            </li>
+        
+            <img src="static/Lista enlazada circular doble.png"  width="1000" height="200">
 
         </p><br>
         <h2>Operaciones permitidas </h2><br>
