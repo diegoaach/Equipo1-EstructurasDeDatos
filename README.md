@@ -66,6 +66,6 @@ Completado al:100%<br />
 Implementacion del arbol binario en python, Responsable: Jean P. <br />
 Completado al:100%<br />
 Hacer el documento del modulo 1 hasta los arboles AVL, Responsable: Diego Angulo<br />
-Completado al:?%<br />
+Completado al:90%<br />
 
 
